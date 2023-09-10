@@ -1,0 +1,117 @@
+@import 'normalize.css';
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100;1,200;1,300;1,400;1,500;1,600&family=Castoro+Titling&family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700;1,800;1,900&family=Prata&family=REM:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Ysabeau:ital,wght@0,1;0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,1;1,100;1,300;1,400;1,500;1,600;1,700;1,900&display=swap");
+
+:root {
+    --menuWidth: 320px;
+    --mainColor: #014c8f;
+    --heightHeader: 64px;
+    --swColor: #014c8f;
+    --leftColBackground: #fff;
+    --lightLeftColBackground: #ededed;
+    --darkLeftColBackground: #22272b;
+    --seemoreColor: #d50000;
+    --accentColor1: #b8b8b8;
+    --accentColor2: #efefef;
+    --textColor: #4c4c4c;
+    --fontIcon: 2.5rem;
+    --WithLayout: 76%;
+    --marginTopLayout: 30px
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    color: var(--textColor);
+}
+
+button,
+input,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+
+a[href] {
+    // color: var(--textColor);
+    text-decoration: none;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.hover-animation {
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: scale(0);
+        transform-origin: top left;
+        z-index: 1;
+        transition-duration: 1.3s;
+    }
+
+    &::after {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: scale(0);
+        transform-origin: bottom right;
+        // z-index: 1;
+        transition-duration: 1.3s;
+    }
+
+    &:hover::before,
+    &:hover::after {
+        cursor: pointer;
+        transform: scale(1);
+        opacity: 0;
+    }
+
+}
+
+.message {
+    margin-top: 10px;
+}
+
+.messageSuccess {
+    color: #00c277 !important;
+}
+
+.messageFailure {
+    color: #e14b33 !important;
+}
+
+.disable_btn {
+    opacity: 0.7 !important;
+}
+
+.disable_btn:hover {
+    pointer-events: none;
+    cursor: default;
+}

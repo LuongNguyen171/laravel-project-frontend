@@ -1,0 +1,129 @@
+.wrapper {
+    color: white;
+    position: relative;
+    margin-top: var(--marginTopLayout);
+
+}
+
+.banner {
+    background-image: url('//bizweb.dktcdn.net/100/415/502/themes/804563/assets/sec_store_bg.jpg?1687425549056');
+    background-color: rgba(0, 0, 0, 0.4);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 30px 0;
+    text-align: center;
+    position: relative;
+    // overflow: hidden;
+    border-bottom: 8px solid var(--mainColor);
+
+    &::before {
+
+        content: "";
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        top: 0;
+        left: 0;
+
+    }
+}
+
+
+.title {
+
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    padding: 20px;
+
+    h2 {
+        margin: 0;
+        color: #fff;
+        display: block;
+        font-size: 30px;
+        line-height: 40px;
+    }
+}
+
+.showroom_btn {
+    background: #fff;
+    color: var(--mainColor);
+    font-size: 18px;
+    padding: 10px 30px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 25px;
+
+    &:hover {
+        background: linear-gradient(to bottom left, var(--mainColor), #62a0d8);
+        color: #fff;
+    }
+
+}
+
+.content {
+    background: var(--darkLeftColBackground);
+    // display: flex;
+
+}
+
+.body {
+    display: flex;
+    justify-content: space-around;
+    // max-width: 1px;
+    padding: 20px 30px 20px 30px;
+    flex-wrap: wrap;
+    gap: 50px;
+
+}
+
+.content_container {
+    text-align: start;
+
+    h3 {
+        font-weight: 600
+    }
+
+    p {
+        line-height: 1.6;
+    }
+}
+
+.infor {
+    p {
+        &:hover {
+            cursor: pointer;
+            color: var(--mainColor);
+        }
+    }
+
+}
+
+.contact_image {
+    img+img {
+        margin-left: 5px;
+    }
+}
+
+.fontsmall {
+    font-size: 18px;
+
+}
+
+.fontLager-Bottom {
+    font-size: 28px;
+    line-height: 100%;
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+    width: fit-content;
+}
+
+.footer_copyRight {
+    border-top: 1px solid #777777;
+    padding: 20px 0 20px 0;
+}

@@ -1,0 +1,70 @@
+.wrapper {
+    margin-top: calc(3*var(--marginTopLayout));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container {
+
+    width: var(--WithLayout);
+
+}
+
+.layout_container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Cho phép các mục con xuống dòng khi không đủ không gian */
+    gap: 20px;
+    /* Khoảng cách giữa các mục */
+}
+
+.product {
+    width: 23%;
+}
+
+.pagination_container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.active {
+    background-color: var(--mainColor);
+}
+
+.arrange_container {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 10px;
+
+    h3 {
+        color: black;
+        font-weight: 600;
+        margin-right: 5px;
+        font-size: 25px;
+    }
+}
+
+.arrange_input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input {
+        margin-right: 5px;
+    }
+}
+
+.arrange_input+.arrange_input {
+    margin-left: 20px;
+}
+
+.input_label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+}

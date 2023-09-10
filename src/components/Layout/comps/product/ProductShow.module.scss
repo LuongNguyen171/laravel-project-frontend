@@ -1,0 +1,153 @@
+@keyframes sale {
+    0% {
+        transform: rotate(-20deg) scale(1);
+    }
+
+    100% {
+        transform: rotate(-20deg) scale(1.1);
+    }
+}
+
+@keyframes new {
+    0% {
+        transform: scale(1);
+        color: white;
+    }
+
+    100% {
+        transform: scale(1.1);
+        color: #d50000;
+    }
+}
+
+.container {
+    position: relative;
+    background: #f9f9f9;
+    width: calc(var(--withLayout / 5));
+    // height: 300px;
+    // margin-right: 5px;
+    overflow: hidden;
+
+    &:hover .brandNew {
+        // border-bottom: 1px solid red;
+        animation: new 1s ease infinite alternate;
+
+    }
+
+    &:hover .container_image {
+        border-bottom: 1px solid red;
+        transition: 1s ease-in-out;
+        transform: scale(1.05);
+
+    }
+}
+
+.container_image {
+    border-bottom: 1px solid var(--accentColor1);
+
+    img {
+        width: 100%;
+    }
+
+}
+
+.brandNew {
+    border-radius: 0 0px 25px 0;
+    padding: 5px;
+    background-color: var(--mainColor);
+    top: 2px;
+    left: 0px;
+    bottom: auto;
+    z-index: 3;
+    position: absolute;
+}
+
+.new_text {
+    color: white;
+    // padding: 0 6px;
+    font-weight: 700;
+}
+
+.brandDiscount {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: -1px;
+    padding: 5px 10px;
+    z-index: 3;
+}
+
+.discount_text {
+    position: relative;
+    display: inline-block;
+    background: #d50000;
+    color: white;
+    height: 3rem;
+    width: 3rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 2rem;
+    transform: rotate(-20deg);
+    animation: sale 1s ease infinite alternate;
+    font-size: 16px;
+    font-weight: 800;
+
+    &::before {
+        content: "";
+        position: absolute;
+        background: inherit;
+        height: inherit;
+        width: inherit;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transform: rotate(30deg);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        background: inherit;
+        height: inherit;
+        width: inherit;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transform: rotate(60deg);
+    }
+
+}
+
+.container_detail {
+    text-align: start;
+    margin: 10px 5px 0 10px;
+}
+
+.productName {
+    font-weight: 700;
+    font-size: larger;
+}
+
+.productPrice {
+    display: flex;
+    // justify-content: space-between;
+
+    align-items: center;
+    font-weight: 700;
+
+
+}
+
+.price_real {
+    color: #d50000;
+    font-size: 20px;
+}
+
+.price_virtual {
+    font-size: 15px;
+    margin-left: 10px;
+    color: var(--accentColor1);
+    text-decoration: line-through;
+}

@@ -1,0 +1,59 @@
+.swiper-button-prev {
+    /* background-color: white !important; */
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShlFpskj6jxJ6yIUdGeLeEzXrvch28ecF3dg&usqp=CAU') !important;
+    background-size: 70% !important; /* Thu nhỏ theo chiều rộng */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: white !important;
+    /* padding: 10px !important; */
+    border-radius: 0 100px 100px 0 !important;
+    left: 0 !important;
+    position: absolute;
+
+    width: 40px !important;
+    height: 70px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* background: #fff !important; */
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2) !important;
+    color: #707070 !important;
+    top: 45% !important;
+    transition: 0.3s !important;
+    outline: none !important;
+    opacity: 0.9 !important;
+}
+
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+    opacity: 0.35 !important;
+    cursor: auto !important;
+    pointer-events: none !important;
+    display: none !important;
+}
+
+.swiper-button-next {
+    /* background-color: white !important; */
+    background-image: url('https://icons.veryicon.com/png/o/miscellaneous/integrated-icon-library-of-middle-and/right-arrow-in.png') !important;
+    background-size: 70% !important; /* Thu nhỏ theo chiều rộng */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: white !important;
+    /* padding: 10px !important; */
+    border-radius: 100px 0 0 100px !important;
+    right: 0 !important;
+    position: absolute;
+
+    width: 40px !important;
+    height: 70px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* background: #fff !important; */
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2) !important;
+    color: #707070 !important;
+    top: 45% !important;
+    transition: 0.3s !important;
+    outline: none !important;
+    opacity: 0.9 !important;
+}

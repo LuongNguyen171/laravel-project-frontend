@@ -1,0 +1,10 @@
+.imgProducer {
+    width: calc(var(--menuWidth)/2);
+    padding: 10px;
+
+    &:hover {
+        border-bottom: 2px solid #ededed;
+        border-right: 2px solid #ededed;
+        cursor: pointer;
+    }
+}

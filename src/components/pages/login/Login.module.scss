@@ -1,0 +1,258 @@
+@keyframes mewup {
+
+    0%,
+    100% {
+        transform: translateY(-30px);
+    }
+
+    50% {
+        transform: translateY(30px);
+    }
+}
+
+.wrapper {
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, var(--mainColor), #62a0d8);
+
+}
+
+.loginLayout {
+    padding: 10px 0 10px 0;
+    background-color: #457fb2;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+
+    border-radius: 10px;
+
+}
+
+.login_content {
+    position: relative;
+    width: 90%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.box-shoe1 {
+    top: -90px;
+    right: -70px;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    animation: mewup 10s linear infinite;
+
+    img {
+        height: 150px;
+        width: auto;
+        // transform: rotate(20deg);
+
+    }
+}
+
+.login_form {
+    width: 100%;
+
+    h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        font-size: large;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+
+    }
+
+}
+
+form {
+
+    input {
+        color: white;
+
+        background-color: #6e9cc4;
+        padding: 10px;
+        width: 100%;
+        border-radius: 50px;
+    }
+
+    input+input {
+        margin-top: 10px;
+    }
+
+    .login_btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        justify-content: space-between;
+    }
+}
+
+.password_container {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.password_content {
+    position: relative;
+
+}
+
+.icon_lock {
+    position: absolute;
+    color: black;
+    top: 30%;
+    right: 15px;
+
+    &:hover {
+        cursor: pointer;
+        color: var(--mainColor)
+    }
+}
+
+.login_btn {
+    .btn_submit {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-size: large;
+        padding: 5px 20px 5px 20px;
+        border-radius: 30px;
+        background-color: var(--mainColor);
+        color: white;
+        font-weight: 500;
+    }
+}
+
+.login_btn {
+
+    a {
+        color: white;
+
+        &:hover {
+            cursor: pointer;
+            color: red;
+            transition-duration: 1s;
+        }
+    }
+}
+
+.options_layout {
+    position: relative;
+
+
+    &::before {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background: #fff;
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        top: 14px;
+    }
+}
+
+.option_title {
+
+    z-index: 1;
+    right: 30%;
+    position: relative;
+    margin-left: 60%;
+    // margin-top: 10px;
+    background-color: white;
+    width: fit-content;
+    color: var(--mainColor);
+    padding: 5px 20px 5px 20px;
+    border-radius: 20px;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    .opt_item+.opt_item {
+        margin-left: 5px;
+    }
+}
+
+.opt_item {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    padding: 2px;
+    background-color: white;
+
+    img {
+        width: 100%;
+        height: 100%;
+
+    }
+
+    &:hover img {
+        transform: scale(1.1);
+        transition-duration: 1s;
+        cursor: pointer;
+    }
+
+    a {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+}
+
+.register_layout {
+    margin-top: 20px;
+}
+
+.describe_box {
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.btn {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.btn_link {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: #6e9cc4;
+    color: white;
+    font-weight: 700;
+    color: white;
+
+    &:hover {
+        background-color: var(--mainColor);
+    }
+
+
+
+
+}

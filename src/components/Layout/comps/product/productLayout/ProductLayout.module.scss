@@ -1,0 +1,23 @@
+.wrapper {
+    margin-top: var(--marginTopLayout);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+
+.layout {
+    width: var(--WithLayout);
+    display: flex;
+    flex-wrap: wrap;
+    /* Cho phép các mục con xuống dòng khi không đủ không gian */
+    gap: 35px;
+    /* Khoảng cách giữa các mục */
+}
+
+.product {
+    width: 23%;
+}

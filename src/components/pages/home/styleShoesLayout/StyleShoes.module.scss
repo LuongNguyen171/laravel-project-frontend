@@ -1,0 +1,149 @@
+.border-image {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.before-master {
+    right: 5%;
+}
+
+.middle-master {
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.affter-master {
+    left: 5%;
+}
+
+.with-container {
+    width: 100%;
+}
+
+.space+.space {
+    margin-left: 10px;
+}
+
+
+.animation-hover {
+    &::before {
+
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: scale(0);
+        transform-origin: top left;
+        z-index: 1;
+        display: block;
+        transition-duration: 1.3s;
+    }
+
+    &::after {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: scale(0);
+        transform-origin: bottom right;
+        // z-index: -1;
+        transition-duration: 1.3s;
+    }
+
+    // &:hover {
+    //     cursor: pointer;
+    // }
+
+    &:hover .style_images {
+        transform: scale(1.1);
+        transition: transform 1.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    &:hover::after,
+    &:hover::before {
+        transform: scale(1);
+        opacity: 0;
+    }
+
+    &:hover .master {
+        background-color: var(--mainColor);
+        transition-duration: 1.3s;
+    }
+}
+
+.wrapper {
+    margin-top: var(--marginTopLayout);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.styleShoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: var(--WithLayout);
+}
+
+
+.before_container {
+    position: relative;
+}
+
+.before_container+.before_container {
+    margin-top: 20px;
+
+}
+
+.style_images {
+    left: 50%;
+    top: 50%;
+
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto !important;
+    height: auto !important;
+}
+
+.master {
+    position: absolute;
+    border-radius: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+
+    top: 5%;
+    width: 50%;
+
+}
+
+.master_header {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.middle_container {
+    position: relative;
+
+}
+
+.after_container {
+    position: relative;
+
+}
+
+.after_container+.after_container {
+    margin-top: 10px;
+
+}

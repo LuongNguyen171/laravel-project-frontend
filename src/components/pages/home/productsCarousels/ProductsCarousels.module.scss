@@ -1,0 +1,12 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: var(--marginTopLayout);
+}
+
+.carousel {
+    // text-align: center;
+    width: var(--WithLayout);
+}
