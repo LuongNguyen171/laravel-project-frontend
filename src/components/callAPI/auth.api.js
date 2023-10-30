@@ -173,8 +173,6 @@ export const handleUpdatePassword = async (email, oldPassword, newPassword) => {
     }
 }
 
-
-
 export const handleLogout = () => {
     localStorage.removeItem('userInFormation')
     localStorage.removeItem('accessToken')

@@ -98,7 +98,7 @@ function Login() {
                                 <img src='https://static-00.iconduck.com/assets.00/google-icon-2048x2048-czn3g8x8.png'>
 
                                 </img>
-                                <a href='http://localhost:3001/auth/google'>google</a>
+                                <a href='http://127.0.0.1:8000/auth/google'>google</a>
                                 {/* <Link to={"/auth/google"}>google</Link> */}
                             </div>
                         </div>

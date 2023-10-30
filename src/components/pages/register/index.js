@@ -55,7 +55,6 @@ function Register() {
         return emailPattern.test(email);
     }
 
-
     useEffect(() => {
         const checkStrongPassword = () => {
             isStrongPassword(userPassword) ? setCheckStrongPassword('') :
