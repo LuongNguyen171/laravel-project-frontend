@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getProducts = async () => {
     try {
-        const response = await axios.get('http://localhost:3001/product/getProducts')
+        const response = await axios.get('http://127.0.0.1:8000/api/products')
         return response.data;
 
     } catch (error) {
@@ -13,7 +13,7 @@ export const getProducts = async () => {
 
 export const handleGetTop10SoldOut = async () => {
     try {
-        const response = await axios.get('http://localhost:3001/product/top10ProductSoldOut');
+        const response = await axios.get('http://127.0.0.1:8000/api/top-products');
         return response.data;
     } catch (error) {
         console.log(error.message);
@@ -23,7 +23,7 @@ export const handleGetTop10SoldOut = async () => {
 
 export const handleGetTop10HighestPrice = async () => {
     try {
-        const response = await axios.get('http://localhost:3001/product/top10HighestPrice')
+        const response = await axios.get('http://127.0.0.1:8000/api/top-products')
         return response.data
     } catch (error) {
         console.log(error.message)
@@ -34,7 +34,7 @@ export const handleGetTop10HighestPrice = async () => {
 export const handleGetAllProductImageById = async (productId) => {
 
     try {
-        const response = await axios.get(`http://localhost:3001/product/getProductImageById/${productId}`)
+        const response = await axios.get(`http://127.0.0.1:8000/api/product-image/${productId}`)
         return response.data
 
     } catch (error) {
@@ -47,7 +47,7 @@ export const handleGetAllProductImageById = async (productId) => {
 export const handleGetProductById = async (productId) => {
 
     try {
-        const response = await axios.get(`http://localhost:3001/product/getProductById/${productId}`)
+        const response = await axios.get(`http://127.0.0.1:8000/api/product/${productId}`)
         return response.data
 
     } catch (error) {

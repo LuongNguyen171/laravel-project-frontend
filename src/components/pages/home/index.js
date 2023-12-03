@@ -51,6 +51,7 @@ function Home() {
                 setArrayProductHighestPrice(fetchProductHighestPrice)
             } catch (error) {
                 console.error('Error fetching data:', error.message);
+                throw error;
             }
             // save user information in the local storage
             const userInFormation = await handleGetPersonalInformation()
