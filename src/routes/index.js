@@ -19,6 +19,7 @@ import BasketShoe from "~/components/pages/basketShoe";
 import Personal from "~/components/pages/private_pages/account";
 import UserList from "~/components/pages/admin/userListPage"
 import ProductList from "~/components/pages/admin/productListPage"
+import Blog from "~/components/pages/Blog";
 
 const publicRouters = [
 
@@ -26,6 +27,7 @@ const publicRouters = [
     { path: '/contact', component: Contact },
     { path: '/introduction', component: Introduction },
     { path: '/news', component: News },
+    { path: '/blog/:id', component:Blog},
     { path: '/product', component: Product },
     { path: '/sportShoe', component: SportShoe },
     { path: '/runShoe', component: RunShoe },
