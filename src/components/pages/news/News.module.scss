@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+
+
+    .left-content {
+        width: 70%;
+        height: 77vh;
+        background-color: #f0f0f0;
+        margin: 120px 50px;
+        border-radius: 10px;
+        flex-wrap: wrap;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .left-content {
+        display: none;
+    }
+}
+
+
