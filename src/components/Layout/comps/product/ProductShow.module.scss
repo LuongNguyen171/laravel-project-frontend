@@ -44,9 +44,11 @@
 
 .container_image {
     border-bottom: 1px solid var(--accentColor1);
+    overflow: hidden;
 
     img {
         width: 100%;
+        height: 350px;
     }
 
 }

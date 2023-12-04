@@ -23,7 +23,7 @@ export const handleGetTop10SoldOut = async () => {
 
 export const handleGetTop10HighestPrice = async () => {
     try {
-        const response = await axios.get('http://127.0.0.1:8000/api/top-products')
+        const response = await axios.get('http://127.0.0.1:8000/api/top-productsHighestPrice')
         return response.data
     } catch (error) {
         console.log(error.message)
@@ -61,7 +61,7 @@ export const handleGetProductById = async (productId) => {
 export const handleGetProductByStyleId = async (styleId) => {
 
     try {
-        const response = await axios.get(`http://localhost:3001/product/getProductByStyleId/${styleId}`)
+        const response = await axios.get(`http://127.0.0.1:8000/api/products-by-style/${styleId}`)
         return response.data
 
     } catch (error) {

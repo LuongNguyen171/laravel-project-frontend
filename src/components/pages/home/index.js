@@ -118,7 +118,6 @@ function Home() {
                         <ProducLayout arrayProduct={arrayProducts} itemsPerpage={8} />
 
                         {
-
                             visibleItemsPr < arrayProducts.length &&
                             <button className={cx('showmores')} onClick={showMoreItems}>XEM THÊM
                                 <FontAwesomeIcon className={cx('icon')} icon={faChevronDown} />
