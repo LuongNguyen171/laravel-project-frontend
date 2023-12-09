@@ -1,5 +1,11 @@
 import classNames from 'classnames/bind';
 import styles from './News.module.scss';
+import SearchBar from './SearchBar';
+import BlogList from './BlogList';
+import { blogList } from '~/config/data';
+import { useState } from 'react';
+import EmptyList from './common/Empty';
+import SideBar from './SideBar';
 
 const cx = classNames.bind(styles);
 
