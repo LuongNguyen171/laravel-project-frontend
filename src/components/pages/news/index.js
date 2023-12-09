@@ -42,7 +42,7 @@ function News() {
     //     }
     // }
     // window.addEventListener('scroll', setFixedSidebar);
-    
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('container')}>
