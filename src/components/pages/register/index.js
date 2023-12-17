@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './Register.module.scss';
-import { handleGetPersonalInformation, handleLoginGoogle, handleRegister } from '~/components/callAPI/auth.api';
+import { handleLoginGoogle, handleRegister } from '~/components/callAPI/auth.api';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,20 +15,22 @@ function Register() {
     const [messageResponse, setMessageResponse] = useState('')
     const [checkStrongPassword, setCheckStrongPassword] = useState('*mật khẩu phải chứa ít nhất 8 kí tự bao gồm : chữ hoa,chữ thường và số')
     const [validEmailText, setValidEmailText] = useState('*email không hợp lệ!')
+    const [isRegisterSuccess, setIsRegisterSuccess] = useState(false)
 
     const [isLock, setIsLock] = useState(false)
     const navigate = useNavigate()
 
     const handleCickRegisterbtn = async () => {
         const responseMesage = await handleRegister(userName, userEmail, userPassword)
-        //call API get user information
-        const userInFormation = await handleGetPersonalInformation()
-        localStorage.setItem('userInFormation', JSON.stringify(userInFormation.userInformation))
-
         if (responseMesage.isRegisterSuccess === true) {
-            navigate('/login')
+            navigate('/')
+            setIsRegisterSuccess(true)
+            setMessageResponse("Đăng kí tài khoản thành công!")
         }
-        setMessageResponse(responseMesage)
+        else {
+            setMessageResponse("Tài khoản này đã tồn tại!")
+            setIsRegisterSuccess(false)
+        }
     }
 
     const isStrongPassword = (password) => {
@@ -118,9 +120,9 @@ function Register() {
                         </div>
 
                         <p className={cx('message', {
-                            messageSuccess: messageResponse.isRegisterSuccess,
-                            messageFailure: messageResponse.isRegisterSuccess === false
-                        })}>{messageResponse.message}</p>
+                            messageSuccess: isRegisterSuccess,
+                            messageFailure: isRegisterSuccess === false
+                        })}>{messageResponse}</p>
 
                         <button
                             className={cx("btn_submit", "hover-animation", {

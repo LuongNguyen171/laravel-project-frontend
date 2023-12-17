@@ -17,26 +17,35 @@ function Login() {
     const [userPassword, setUserPassword] = useState('')
     const [isLock, setIsLock] = useState(false)
     const [messageResponse, setMessageResponse] = useState('')
+    const [isLoginSuccess, setIsLoginSuccess] = useState(false)
     const navigate = useNavigate()
     const dispath = useDispatch()
 
     const handleClickLoginBtn = async () => {
-        const responMessage = await handleLogin(userEmail, userPassword)
-        setMessageResponse(responMessage)
-    }
-    useEffect(() => {
-
-    })
-
-    useEffect(() => {
-        console.log("message: ", messageResponse)
-
-        if (messageResponse.isLoginSuccess) {
-
-            dispath(loginSuccessReducer.actions.LOGIN_SUCCESS_REDUCER(true))
+        const responseMesage = await handleLogin(userEmail, userPassword)
+        if (responseMesage.isLoginSuccess === true) {
             navigate('/')
+            setIsLoginSuccess(true)
+            setMessageResponse("Đăng nhập thành công!")
         }
-    }, [messageResponse])
+        else {
+            setMessageResponse("Thông tin tài khoản không chính xác!")
+            setIsLoginSuccess(false)
+        }
+    }
+    // useEffect(() => {
+
+    // })
+
+    // useEffect(() => {
+    //     console.log("message: ", messageResponse)
+
+    //     if (messageResponse.isLoginSuccess) {
+
+    //         dispath(loginSuccessReducer.actions.LOGIN_SUCCESS_REDUCER(true))
+    //         navigate('/')
+    //     }
+    // }, [messageResponse])
 
     return (<div className={cx('wrapper')}>
         <section className={cx('loginLayout')}>
@@ -69,10 +78,10 @@ function Login() {
                         </div>
                         <p className={cx('message',
                             {
-                                messageSuccess: messageResponse.isLoginSuccess,
-                                messageFailure: messageResponse.isLoginSuccess === false
+                                messageSuccess: isLoginSuccess,
+                                messageFailure: isLoginSuccess === false
                             })}
-                        >{messageResponse.message}
+                        >{messageResponse}
                         </p>
 
                         <div className={cx('login_btn')}>
