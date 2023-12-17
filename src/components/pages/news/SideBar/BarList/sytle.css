@@ -1,0 +1,23 @@
+.barlist-wrap {
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: left;
+    width: 90%;
+    margin-bottom: 5px;
+}
+
+.barlist-cover {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin: 0.7rem;
+}
+
+.barlist-wrap p {
+    height: 67.5px;
+    width: 200px;
+    font-size: 1.3rem;
+    margin-top: 4px;
+    margin-left: 2px;
+}

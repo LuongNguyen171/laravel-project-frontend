@@ -15,6 +15,7 @@ import StyleShoes from './styleShoesLayout';
 import TitleLayout from './titleLayout';
 import { visibleItems } from '~/components/redux/reducers/visibleItemsReducer';
 import { handleGetPersonalInformation, handleLoginGoogle } from '~/components/callAPI/auth.api';
+import { useParams } from 'react-router-dom';
 
 
 const cx = classNames.bind(styles);
@@ -25,12 +26,14 @@ function Home() {
     const [arrayProducts, setArrayProducts] = useState([])
     const [arrayProductSoldOut, setArrayProductSoldOut] = useState([])
     const [arrayProductHighestPrice, setArrayProductHighestPrice] = useState([])
-
     const [visibleItemsPr, setVisbleItemsPr] = useState(8)
+    const { token } = useParams()
 
-    const showMoreItems = () => {
-        setVisbleItemsPr(preVisbleItems => preVisbleItems + visibleItemsPr)
-    }
+    useEffect(() => {
+
+        token && (localStorage.setItem("accessToken", JSON.stringify(token)))
+    }, [token])
+
 
     useEffect(() => {
         dispath(visibleItems.actions.VISIBLE_ITEMS(visibleItemsPr))
@@ -62,6 +65,11 @@ function Home() {
         fetchData()
         handleLoginGoogle()
     }, [])
+
+    const showMoreItems = () => {
+        setVisbleItemsPr(preVisbleItems => preVisbleItems + visibleItemsPr)
+    }
+
 
     return (<div className={cx('wrapper')}>
         <Banner />

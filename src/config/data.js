@@ -1,0 +1,86 @@
+export const blogList = [
+    {
+        id: 1,
+        title: 'Tất tần tật bí quyết chọn mua quần áo thể thao nam chất lượng nhất',
+        category: 'Thời trang',
+        subCategory: ['frontend', 'ui/ux', 'design'],
+        description:
+            'Là những người đam mê bộ môn Gym và mong muốn có thân hình đẹp, thu hút mọi ánh nhìn của nữ giới, hay đơn giản bạn tập để nâng cao sức khỏe của mình, thì một bộ quần áo thể thao nam chắc hẳn là thứ đồ không thể thiếu của bất cứ ai.',
+        authorName: 'Nguyễn Thị Kim Anh',
+        authorAvatar: '/assets/images/author.jpg',
+        createdAt: '05/10/2023',
+        cover: '/assets/images/designer-1.png',
+    },
+    {
+        id: 2,
+        title: 'Tips chọn áo thun thể thao nam phù hợp anh chàng ưa vận động',
+        category: 'Tip chọn',
+        subCategory: ['vacation', 'holidays', 'sight seeing'],
+        description:
+            'Áo thun thể thao dành cho nam là món đồ phổ biến ở những chàng trai yêu thích thể dục thể thao, các hoạt động cần sự vận động. Khác với việc hoạt động hàng ngày, tập luyện thể thao cần nhiều sức lực và các động tác mạnh hơn nên rất cần một chiếc áo chuyên dụng để đáp ứng hoạt động này. Áo thun thể thao cũng khá đa dạng nên việc lựa chọn đôi lúc sẽ khó khăn với nam giới. Đừng lo lắng, cùng Routine xem ngay những tips chọn áo thể thun thể thao phù hợp vận động trong bài viết dưới đây nhé!',
+        authorName: 'Nguyễn Thị Kim Anh',
+        authorAvatar: '/assets/images/author.jpg',
+        createdAt: '05/10/2023',
+        cover: '/assets/images/f67396fc3cfce63a28e07ebb35d974ac.jpg',
+    },
+    {
+        id: 3,
+        title: 'Phối đồ với giày Converse 1970s chưa bao giờ đơn giản đến thế',
+        category: 'Thời trang',
+        subCategory: ['e-commerce store', 'clothing', 'shopping store'],
+        description:
+            'Là một trong những dòng giày chủ lực của nhà bóng rổ, Converse Chuck 1970s được các bạn trẻ săn đón nồng nhiệt, với mỗi phiên bản ra đời đều nhanh chóng cháy hàng. Mẫu giày kinh điển này là sự kết hợp giữa nét cổ điển trong form dáng đặc trưng của Converse, cùng những nâng cấp hiện đại mang đến nhiều tiện nghi hơn. Đây còn là item thời trang giúp bạn hoàn thiện outfit, mang đến diện mạo trẻ trung, năng động. Cùng Drake kiểm chứng bằng cách tham khảo một số phong cách phối đồ với giày Converse 1970s để rút ra ý tưởng cho outfit dạo phố cuối tuần nhé!',
+        authorName: 'Nguyễn Thị Kim Anh',
+        authorAvatar: '/assets/images/author.jpg',
+        createdAt: '05/10/2023',
+        cover: '/assets/images/fQwuyKJ9qxjSbr6REcgtmW-1200-80.jpg',
+    },
+    {
+        id: 4,
+        title: 'Cách chọn size giày MLB nam đúng chuẩn ? Bảng size giày MLB Việt Nam',
+        category: 'Hướng dẫn',
+        subCategory: ['adrenaline', 'stay-fit', 'lifestyle'],
+        description:
+            'Giày MLB nam được nhiều bạn trẻ yêu thích. Vậy bạn đã biết cách chọn size giày MLB nam đúng chuẩn chưa ? Tham khảo ngay bảng size giày MLB chuẩn tại bài viết này. Thiết kế của giày MLB khác với các form giày sneaker đế bằng thông thường, nên nếu chưa rõ cách chọn size giày MLB nam, các chàng rất dễ bị kích chân',
+        authorName: 'Nguyễn Thị Kim Anh',
+        authorAvatar: '/assets/images/author.jpg',
+        createdAt: '05/10/2023',
+        cover: '/assets/images/graphic-design-trends.jpg',
+    },
+    {
+        id: 5,
+        title: 'Trào lưu băng đô to bản đổ bộ spring summer 2023',
+        category: 'Trào lưu',
+        subCategory: ['bbq', 'food', 'lifestyle'],
+        description:
+            'Thay thế các phụ kiện thời trang nữ tính như cài tóc ngọc trai, nón tai bèo... băng đô to bản (sweatband)/ băng trán được nhiều tên tuổi đình đám trong giới thời trang lăng xê hứa hẹn sẽ tạo nên xu hướng mới mùa hè 2023. ',
+        authorName: 'Nguyễn Thị Kim Anh',
+        authorAvatar: '/assets/images/author.jpg',
+        createdAt: '05/10/2023',
+        cover: '/assets/images/make-it-personal.jpg',
+    },
+    {
+        id: 6,
+        title: 'Chọn running bra, sport bra cho dân chạy bộ',
+        category: 'Thể thao',
+        subCategory: ['beaches', 'sea', 'holidays'],
+        description:
+            'Sử dụng áo ngực thể thao (sport bra) phù hợp rất quan trọng vì chúng giúp bạn luôn thoải mái khi chạy, đặc biệt là trong thời gian dài. Vì chạy bộ là môn thể thao có tác động mạnh nên sport bra bạn chọn trong những ngày tập luyện có thể khác với áo ngực bạn mặc hằng ngày.',
+        authorName: 'Nguyễn Thị Kim Anh',
+        authorAvatar: '/assets/images/author.jpg',
+        createdAt: '05/10/2023',
+        cover: '/assets/images/Purple-Combination-colors-graphic-design-predictions-1024x576-1024x576.jpg',
+    },
+    {
+        id: 7,
+        title: 'Hướng dẫn cách sử dụng băng keo thể thao hiệu quả',
+        category: 'Hướng dẫn',
+        subCategory: ['skill', 'design', 'passion'],
+        description:
+            'Băng keo thể thao là gì? Sử dụng sản phẩm này có tác dụng gì? Người ta thường dùng băng keo thể thao ở những bộ phận nào trên cơ thể? Cách dùng như thế nào đảm bảo hiệu quả tốt nhất? Mua sản phẩm ở đâu uy tín, chất lượng? Tất cả phân vân của bạn sẽ được chúng tôi giải đáp đầy đủ trong bài viết dưới đây.',
+        authorName: 'Nguyễn Thị Kim Anh',
+        authorAvatar: '/assets/images/author.jpg',
+        createdAt: '05/10/2023',
+        cover: '/assets/images/Synthwave-Postmodern.jpg',
+    },
+];
