@@ -102,7 +102,6 @@ function Account() {
     const checkToken = async () => {
         if (token) {
             const userInfor = await handleGetPersonalInformation(token);
-            console.log("userInfor: " + userInfor)
             setUserInformation(userInfor);
         }
 

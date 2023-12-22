@@ -14,7 +14,7 @@ import moment from 'moment';
 import { createBill, handleSendPorductOder } from '~/components/callAPI/bill.api';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { handleUpdateUserInformation } from '~/components/callAPI/auth.api';
+import { handleGetPersonalInformation, handleUpdateUserInformation } from '~/components/callAPI/auth.api';
 
 const cx = classNames.bind(styles);
 function Bill() {
@@ -30,6 +30,9 @@ function Bill() {
 
     const [arrayProductOrder, setArayProductOrder] = useState([])
     const arrayProductCart = JSON.parse(localStorage.getItem('cartShoeProject'))
+
+    const { token } = JSON.parse(localStorage.getItem('accessToken'))
+
 
     const navigate = useNavigate()
 
@@ -99,18 +102,29 @@ function Bill() {
         // console.log('email: ', emailCustomer)
     }, [emailCustomer])
 
+
+
     useEffect(() => {
-        const userInfor = JSON.parse(localStorage.getItem('userInFormation'))
-        if (userInfor) {
+        const getUserInfo = async () => {
+            if (token) {
+                try {
+                    const userInfor = await handleGetPersonalInformation(token);
+                    console.log('userinfo: ', userInfor);
 
-            setNameCustomer(userInfor.userName)
-            setEmailCustomer(userInfor.userEmail)
-            setPhoneCustomer(userInfor.userPhoneNumber)
-            setAddressCustomer(userInfor.userAddress)
-        }
-    }, [])
+                    if (userInfor) {
+                        setNameCustomer(userInfor.userName);
+                        setEmailCustomer(userInfor.userEmail);
+                        setPhoneCustomer(userInfor.userPhoneNumber);
+                        setAddressCustomer(userInfor.userAddress);
+                    }
+                } catch (error) {
+                    console.error('Error fetching user information:', error);
+                }
+            }
+        };
 
-
+        getUserInfo();
+    }, [token]);
 
     useEffect(() => {
         if (isOrder) {

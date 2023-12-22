@@ -113,7 +113,7 @@ function Detail() {
             try {
                 const products = await getProducts()
                 setArrayProduct(products)
-                console.log('product:', products)
+
             } catch (error) {
                 console.error(error)
             }
