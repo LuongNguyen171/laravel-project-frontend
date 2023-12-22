@@ -32,8 +32,8 @@ const ProductPage = () => {
 
     const getAllProducts = async () => {
         const response = await getProducts();
-        if (response && response.status === 200) {
-            setProducts(response.data);
+        if (response) {
+            setProducts(response);
         }
     };
 
