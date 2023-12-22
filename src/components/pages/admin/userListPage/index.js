@@ -13,8 +13,10 @@ import {
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import DataGridMain from '~/components/table';
+import { useNavigate } from 'react-router-dom';
 
 const UserPage = () => {
+    const navigate = useNavigate();
     const rows = [...Array(50)].map((_, idx) => ({
         id: idx + 1,
         deviceName: 'Tên thiết bị',
@@ -195,6 +197,9 @@ const UserPage = () => {
                             borderRadius: '6px',
                         }}
                     >
+                        <button onClick={() => navigate('/admin/productList')}>
+                            Switch to Product List
+                        </button>
                         <FormControl fullWidth size="small">
                             <InputLabel
                                 style={{

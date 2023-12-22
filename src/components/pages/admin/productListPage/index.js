@@ -15,8 +15,10 @@ import {
     deleteProduct,
     handleGetProductById,
 } from '~/components/callAPI/product.api';
+import { useNavigate } from 'react-router-dom';
 
 const ProductPage = () => {
+    const navigate = useNavigate();
     const [isAddModalOpen, setAddModalOpen] = useState(false);
     const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -304,6 +306,9 @@ const ProductPage = () => {
                 <Typography variant="h3" fontWeight="bold" marginBottom="10px">
                     Quản lý sản phẩm
                 </Typography>
+                <button onClick={() => navigate('/admin/userList')}>
+                    Switch to User List
+                </button>
                 <Box
                     className="header-button"
                     style={{
