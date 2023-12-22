@@ -35,11 +35,15 @@ const UserPage = () => {
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography fontSize="label2">{headerName}</Typography>;
+                return <Typography variant="h6">{headerName}</Typography>;
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography variant="label1">{text}</Typography>;
+                return (
+                    <Typography sx={{ fontWeight: '600' }} variant="label1">
+                        {text}
+                    </Typography>
+                );
             },
         },
         {
@@ -50,11 +54,13 @@ const UserPage = () => {
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography variant="label3">{headerName}</Typography>;
+                return <Typography variant="h6">{headerName}</Typography>;
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography variant="body2">{text}</Typography>;
+                return (
+                    <Typography sx={{ fontSize: '13px' }}>{text}</Typography>
+                );
             },
         },
         {
@@ -65,11 +71,13 @@ const UserPage = () => {
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography variant="label3">{headerName}</Typography>;
+                return <Typography variant="h6">{headerName}</Typography>;
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography variant="body2">{text}</Typography>;
+                return (
+                    <Typography sx={{ fontSize: '13px' }}>{text}</Typography>
+                );
             },
         },
         {
@@ -80,11 +88,13 @@ const UserPage = () => {
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography variant="label3">{headerName}</Typography>;
+                return <Typography variant="h6">{headerName}</Typography>;
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography variant="body2">{text}</Typography>;
+                return (
+                    <Typography sx={{ fontSize: '13px' }}>{text}</Typography>
+                );
             },
         },
         {
@@ -95,11 +105,13 @@ const UserPage = () => {
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography variant="label3">{headerName}</Typography>;
+                return <Typography variant="h6">{headerName}</Typography>;
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography variant="body2">{text}</Typography>;
+                return (
+                    <Typography sx={{ fontSize: '13px' }}>{text}</Typography>
+                );
             },
         },
         {
@@ -110,11 +122,13 @@ const UserPage = () => {
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography variant="label3">{headerName}</Typography>;
+                return <Typography variant="h6">{headerName}</Typography>;
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography variant="body2">{text}</Typography>;
+                return (
+                    <Typography sx={{ fontSize: '13px' }}>{text}</Typography>
+                );
             },
         },
         {
@@ -125,11 +139,13 @@ const UserPage = () => {
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography variant="label3">{headerName}</Typography>;
+                return <Typography variant="h6">{headerName}</Typography>;
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography variant="body2">{text}</Typography>;
+                return (
+                    <Typography sx={{ fontSize: '13px' }}>{text}</Typography>
+                );
             },
         },
     ];
@@ -158,15 +174,6 @@ const UserPage = () => {
                     padding: '24px 0',
                 }}
             >
-                <Box>
-                    <Typography variant="h5">Báo cáo</Typography>
-                    <Typography
-                        variant="body2"
-                        style={{ color: ' var(--text-secondary)' }}
-                    >
-                        Cập nhật dữ liệu{' '}
-                    </Typography>
-                </Box>
                 <Box
                     className="header-button"
                     style={{
@@ -221,7 +228,7 @@ const UserPage = () => {
                                         key={item.id}
                                         value={item.projectName}
                                     >
-                                        <Typography variant="body2">
+                                        <Typography sx={{ fontSize: '13px' }}>
                                             {' '}
                                             Dự án {item.projectName}
                                         </Typography>

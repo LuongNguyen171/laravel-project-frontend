@@ -5,7 +5,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { useEffect, useState } from 'react';
 
 import Pagination from '@mui/material/Pagination';
-import useWindowDimensions from '../../hook/handleWindowDimensions';
+import useWindowDimensions from '~/hook/handleWindowDimensions';
 // const rows = [
 //   { id: 1, col1: "Hello", col2: "World" },
 //   { id: 2, col1: "DataGridPro", col2: "is Awesome" },
@@ -111,7 +111,7 @@ const DataGridMain = ({
                 alignItems={'center'}
                 justifyContent={'end'}
             >
-                <Typography variant="body3"> {labelRowPageper()}</Typography>
+                <Typography variant="h5"> {labelRowPageper()}</Typography>
                 <Pagination
                     count={totalPage}
                     page={page}

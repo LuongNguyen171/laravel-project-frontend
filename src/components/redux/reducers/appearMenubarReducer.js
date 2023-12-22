@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 export const appearMenuBar = createSlice({
     name: 'APPEAR',
@@ -7,9 +7,6 @@ export const appearMenuBar = createSlice({
         APPEAR_MENU_BAR: (state, action) => {
             state = action.payload;
             return state;
-        }
-    }
+        },
+    },
 });
-
-
-

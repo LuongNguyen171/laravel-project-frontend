@@ -3,7 +3,7 @@ import styles from './Account.module.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { handleGetPersonalInformation, handleLogout, handleUpdatePassword } from '~/components/callAPI/auth.api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { handleGetBillUserByEmail } from '~/components/callAPI/bill.api';
 import { formatProductPrice } from '~/components/Layout/comps/product/productHandleMethod';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -76,27 +76,43 @@ function Account() {
         setIsShowModal(false)
     }
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const userInfor = handleGetPersonalInformation();
+    //             // console.log("user information: ", userInfor)
+    //             setUserInformation(userInfor);
+    //             const userEmail = userInfor?.userEmail;
+
+    //             if (userEmail) {
+    //                 const userOrderBill = await handleGetBillUserByEmail(userEmail);
+    //                 const userOrder = userOrderBill.bills
+    //                 setUserOrder(userOrder);
+    //             }
+
+    //         } catch (error) {
+    //             setIsData(false)
+    //             console.error('Người dùng chưa đăng nhập hoặc token đã hết hạn!', error.message);
+    //         }
+    //     };
+    //     fetchData();
+    // }, []);
+    const { token } = JSON.parse(localStorage.getItem('accessToken'))
+
+    const checkToken = async () => {
+        if (token) {
+            const userInfor = await handleGetPersonalInformation(token);
+            console.log("userInfor: " + userInfor)
+            setUserInformation(userInfor);
+        }
+
+    }
+
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const userInfor = await handleGetPersonalInformation();
-                // console.log("user information: ", userInfor)
-                setUserInformation(userInfor.userInformation);
-                const userEmail = userInfor.userInformation?.userEmail;
+        checkToken()
 
-                if (userEmail) {
-                    const userOrderBill = await handleGetBillUserByEmail(userEmail);
-                    const userOrder = userOrderBill.bills
-                    setUserOrder(userOrder);
-                }
-
-            } catch (error) {
-                setIsData(false)
-                console.error('Người dùng chưa đăng nhập hoặc token đã hết hạn!', error.message);
-            }
-        };
-        fetchData();
-    }, []);
+    }, [token]);
+    console.log('user: ', userInformation)
 
     return (<div className={cx('wrapper')}>
         {

@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const handleRegister = async (userName, userEmail, userPassword) => {
     try {
-        const response = await axios.post("http://localhost:3001/auth/register", {
+        const response = await axios.post("http://127.0.0.1:8000/api/auth/register", {
             userName: userName,
             userEmail: userEmail,
             userPassword: userPassword
@@ -12,7 +12,7 @@ export const handleRegister = async (userName, userEmail, userPassword) => {
         const expirationTime = new Date().setDate(new Date().getDate() + 1)
 
         const tokenInfo = {
-            token: response.data.createToken,
+            token: response.data.token,
             expirationTime: expirationTime
         }
         // console.log("date :", new Date().getTime())
@@ -24,8 +24,6 @@ export const handleRegister = async (userName, userEmail, userPassword) => {
 
     } catch (error) {
         console.error("Đã có lỗi :", error)
-
-
         return {
             message: error.response.data.message,
             isRegisterSuccess: false
@@ -37,16 +35,17 @@ export const handleRegister = async (userName, userEmail, userPassword) => {
 export const handleLogin = async (userEmail, userPassword) => {
 
     try {
-        const response = await axios.post("http://localhost:3001/auth/login", {
-            userEmail: userEmail,
-            userPassword: userPassword
+        const response = await axios.post("http://127.0.0.1:8000/api/auth/login", {
+            userPassword: userPassword,
+            userEmail: userEmail
         })
         // console.log(response.data)
 
         const expirationTime = new Date().setDate(new Date().getDate() + 1)
 
         const tokenInfo = {
-            token: response.data.createToken,
+            token: response.data.token,
+            user: response.data.user,
             expirationTime: expirationTime
         }
         // console.log("date :", new Date().getTime())
@@ -112,20 +111,16 @@ export const handleResetPassword = async (email, token, newPassword) => {
 
 }
 
-export const handleGetPersonalInformation = async () => {
+export const handleGetPersonalInformation = async (token) => {
 
-    if (localStorage.getItem("accessToken")) {
-        const token = JSON.parse(localStorage.getItem("accessToken")).token;
+    if (token) {
         try {
-            const response = await axios.get("http://localhost:3001/auth/personal-information", {
+            const response = await axios.get("http://127.0.0.1:8000/api/auth/user-infor", {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             })
-            return {
-                userInformation: response.data.userDatabase,
-                isSuccess: true
-            }
+            return response.data.user
 
         } catch (error) {
             return {
@@ -133,6 +128,7 @@ export const handleGetPersonalInformation = async () => {
                 isSuccess: false
             }
         }
+
     }
 
 }

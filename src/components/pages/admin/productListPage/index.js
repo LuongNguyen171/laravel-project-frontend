@@ -327,7 +327,12 @@ const ProductPage = () => {
                     </Button>
                 </Box>
             </Box>
-            <DataGridMain rows={rows} columns={columns} />
+            <DataGridMain
+                rows={rows}
+                columns={columns}
+                pageSize={10}
+                totalRow={50}
+            />
 
             {isAddModalOpen && (
                 <AddProductModal
