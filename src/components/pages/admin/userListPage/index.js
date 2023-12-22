@@ -1,5 +1,5 @@
 import './UserListPage.module.scss';
-
+import { mockDataUser } from '../../../callAPI/user.api';
 import React, { useState } from 'react';
 import {
     Box,
@@ -10,11 +10,11 @@ import {
     Select,
     Typography,
 } from '@mui/material';
-
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import DataGridMain from '~/components/table';
 
-const ReportPage = () => {
+const UserPage = () => {
     const rows = [...Array(50)].map((_, idx) => ({
         id: idx + 1,
         deviceName: 'Tên thiết bị',
@@ -35,7 +35,7 @@ const ReportPage = () => {
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography variant="label3">{headerName}</Typography>;
+                return <Typography fontSize="label2">{headerName}</Typography>;
             },
             renderCell: (params) => {
                 let text = params.value;
@@ -217,7 +217,10 @@ const ReportPage = () => {
                                 id="report-simple-select"
                             >
                                 {menuItemDevice.map((item) => (
-                                    <MenuItem key={item.id} value={item.projectName}>
+                                    <MenuItem
+                                        key={item.id}
+                                        value={item.projectName}
+                                    >
                                         <Typography variant="body2">
                                             {' '}
                                             Dự án {item.projectName}
@@ -240,5 +243,4 @@ const ReportPage = () => {
         </Box>
     );
 };
-
-export default ReportPage;
+export default UserPage;

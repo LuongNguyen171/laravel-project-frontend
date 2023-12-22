@@ -1,7 +1,7 @@
 import './Table.module.scss';
 
 import { Card, Stack, Typography } from '@mui/material';
-import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import { useEffect, useState } from 'react';
 
 import Pagination from '@mui/material/Pagination';
@@ -21,7 +21,7 @@ import useWindowDimensions from '../../hook/handleWindowDimensions';
 const DataGridMain = ({
     totalRow = 99,
     // page = 1,
-    pageSize = 20,
+    pageSize = 10,
     rows,
     columns,
 }) => {
@@ -32,7 +32,9 @@ const DataGridMain = ({
     const getHeaderHeight = () => {
         const root = document.documentElement;
         const computedStyle = getComputedStyle(root);
-        const heightHeader = computedStyle.getPropertyValue('--height-header').trim();
+        const heightHeader = computedStyle
+            .getPropertyValue('--height-header')
+            .trim();
 
         const numericHeight = parseFloat(heightHeader);
 
@@ -54,7 +56,7 @@ const DataGridMain = ({
             setTableHeight(windowDimensions.height - (getHeaderHeight() + 188));
         }
     }, [windowDimensions]);
-    console.log("windowDimensions: ", windowDimensions);
+    // console.log("windowDimensions: ", windowDimensions);
 
     const totalPage = Math.ceil(totalRow / pageSize);
     const labelRowPageper = () => {
