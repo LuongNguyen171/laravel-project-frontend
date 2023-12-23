@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { convertPriceToFloat, handleAfDistcountPrice, limitproductName, formatProductPrice } from '~/components/Layout/comps/product/productHandleMethod';
 import moment from 'moment';
-import { createBill, handleSendPorductOder } from '~/components/callAPI/bill.api';
+import { createBill, handleSendBillConfirm } from '~/components/callAPI/bill.api';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { handleGetPersonalInformation, handleUpdateUserInformation } from '~/components/callAPI/auth.api';
@@ -25,6 +25,7 @@ function Bill() {
     const [nameCustomer, setNameCustomer] = useState('')
     const [showModal, setShowModal] = useState(false)
     const [isOrder, setIsOrder] = useState(false)
+
     const handleCloseModal = () => setShowModal(false)
     const handleShowModal = () => setShowModal(true)
 
@@ -58,23 +59,20 @@ function Bill() {
         const currentTime = moment().format('YYYY-MM-DD');
         return currentTime
     }
-    const sendProductOrder = async () => {
-        await handleSendPorductOder(emailCustomer, nameCustomer)
-    }
 
     const handleCreateBill = async () => {
+        const products = [];
 
         for (const product of arrayProductOrder) {
-
             try {
-
-                if (emailCustomer
-                    && nameCustomer
-                    && phoneCustomer
-                    && addressCustomer
-                    && product.productId
-                    && product.quantity) {
-
+                if (
+                    emailCustomer &&
+                    nameCustomer &&
+                    phoneCustomer &&
+                    addressCustomer &&
+                    product.productId &&
+                    product.quantity
+                ) {
                     const response = await createBill(
                         emailCustomer,
                         nameCustomer,
@@ -82,24 +80,29 @@ function Bill() {
                         addressCustomer,
                         product.productId,
                         product.quantity,
-                        getDatePurchase())
+                        getDatePurchase()
+                    );
 
-                    await handleUpdateUserInformation(phoneCustomer, addressCustomer, emailCustomer)
-                    setIsOrder(true)
+                    products.push({
+                        productId: product.productId,
+                        quantityPurchased: product.quantity,
+                    });
+
+                    setIsOrder(true);
                 }
-
             } catch (error) {
-                console.log('tạo bill thất bại')
 
-                setIsOrder(false)
+                setIsOrder(false);
+                throw error;
             }
         }
+        await handleSendBillConfirm(emailCustomer, nameCustomer, products)
 
-    }
+    };
+
 
     useEffect(() => {
         setArayProductOrder(arrayProductCart)
-        // console.log('email: ', emailCustomer)
     }, [emailCustomer])
 
 
@@ -109,7 +112,6 @@ function Bill() {
             if (token) {
                 try {
                     const userInfor = await handleGetPersonalInformation(token);
-                    console.log('userinfo: ', userInfor);
 
                     if (userInfor) {
                         setNameCustomer(userInfor.userName);
@@ -126,12 +128,12 @@ function Bill() {
         getUserInfo();
     }, [token]);
 
-    useEffect(() => {
-        if (isOrder) {
-            sendProductOrder()
-            console.log('is order: ', isOrder)
-        }
-    }, [isOrder])
+    // useEffect(() => {
+    //     if (isOrder) {
+    //         sendProductOrder()
+    //         console.log('is order: ', isOrder)
+    //     }
+    // }, [isOrder])
 
     return (<div className={cx('wrapper')}>
         <div className={cx('bill_container')}>
