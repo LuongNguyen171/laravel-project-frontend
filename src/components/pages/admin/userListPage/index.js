@@ -1,5 +1,5 @@
 import './UserListPage.module.scss';
-
+import { mockDataUser } from '../../../callAPI/user.api';
 import React, { useState } from 'react';
 import {
     Box,
@@ -10,11 +10,13 @@ import {
     Select,
     Typography,
 } from '@mui/material';
-
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import DataGridMain from '~/components/table';
+import { useNavigate } from 'react-router-dom';
 
-const ReportPage = () => {
+const UserPage = () => {
+    const navigate = useNavigate();
     const rows = [...Array(50)].map((_, idx) => ({
         id: idx + 1,
         deviceName: 'Tên thiết bị',
@@ -39,7 +41,11 @@ const ReportPage = () => {
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography sx={{ fontWeight: "600" }} variant="label1">{text}</Typography>;
+                return (
+                    <Typography sx={{ fontWeight: '600' }} variant="label1">
+                        {text}
+                    </Typography>
+                );
             },
         },
         {
@@ -54,7 +60,9 @@ const ReportPage = () => {
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography sx={{ fontSize: "13px" }}>{text}</Typography>;
+                return (
+                    <Typography sx={{ fontSize: '13px' }}>{text}</Typography>
+                );
             },
         },
         {
@@ -69,7 +77,9 @@ const ReportPage = () => {
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography sx={{ fontSize: "13px" }}>{text}</Typography>;
+                return (
+                    <Typography sx={{ fontSize: '13px' }}>{text}</Typography>
+                );
             },
         },
         {
@@ -84,7 +94,9 @@ const ReportPage = () => {
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography sx={{ fontSize: "13px" }}>{text}</Typography>;
+                return (
+                    <Typography sx={{ fontSize: '13px' }}>{text}</Typography>
+                );
             },
         },
         {
@@ -99,7 +111,9 @@ const ReportPage = () => {
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography sx={{ fontSize: "13px" }}>{text}</Typography>;
+                return (
+                    <Typography sx={{ fontSize: '13px' }}>{text}</Typography>
+                );
             },
         },
         {
@@ -114,7 +128,9 @@ const ReportPage = () => {
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography sx={{ fontSize: "13px" }}>{text}</Typography>;
+                return (
+                    <Typography sx={{ fontSize: '13px' }}>{text}</Typography>
+                );
             },
         },
         {
@@ -129,7 +145,9 @@ const ReportPage = () => {
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography sx={{ fontSize: "13px" }}>{text}</Typography>;
+                return (
+                    <Typography sx={{ fontSize: '13px' }}>{text}</Typography>
+                );
             },
         },
     ];
@@ -158,7 +176,6 @@ const ReportPage = () => {
                     padding: '24px 0',
                 }}
             >
-
                 <Box
                     className="header-button"
                     style={{
@@ -180,6 +197,9 @@ const ReportPage = () => {
                             borderRadius: '6px',
                         }}
                     >
+                        <button onClick={() => navigate('/admin/productList')}>
+                            Switch to Product List
+                        </button>
                         <FormControl fullWidth size="small">
                             <InputLabel
                                 style={{
@@ -209,8 +229,11 @@ const ReportPage = () => {
                                 id="report-simple-select"
                             >
                                 {menuItemDevice.map((item) => (
-                                    <MenuItem key={item.id} value={item.projectName}>
-                                        <Typography sx={{ fontSize: "13px" }}>
+                                    <MenuItem
+                                        key={item.id}
+                                        value={item.projectName}
+                                    >
+                                        <Typography sx={{ fontSize: '13px' }}>
                                             {' '}
                                             Dự án {item.projectName}
                                         </Typography>
@@ -232,5 +255,4 @@ const ReportPage = () => {
         </Box>
     );
 };
-
-export default ReportPage;
+export default UserPage;

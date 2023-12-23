@@ -2,12 +2,11 @@
     position: relative;
 
     &::before {
-
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        content: "";
+        content: '';
         pointer-events: none;
         position: absolute;
         background-color: rgba(255, 255, 255, 0.4);
@@ -23,7 +22,7 @@
         right: 0;
         width: 100%;
         height: 100%;
-        content: "";
+        content: '';
         pointer-events: none;
         position: absolute;
         background-color: rgba(255, 255, 255, 0.4);
@@ -45,16 +44,13 @@
         transform: scale(1);
         opacity: 0;
     }
-
 }
-
 
 .wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: var(--marginTopLayout);
-
 }
 
 .colection {
@@ -73,8 +69,9 @@
     box-shadow: 0px 0px 2px 0px var(--mainColor);
 
     &::before {
-        content: "";
-        background: url(//bizweb.dktcdn.net/100/415/502/themes/804563/assets/sale-bagde.png?1687425413738) no-repeat;
+        content: '';
+        background: url(//bizweb.dktcdn.net/100/415/502/themes/804563/assets/sale-bagde.png?1687425413738)
+            no-repeat;
         position: absolute;
         top: -5px;
         right: -5px;
@@ -85,7 +82,6 @@
     }
 
     // margin-left: 20px;
-
 }
 
 .intro_img {
@@ -94,7 +90,6 @@
     position: relative;
 
     // z-index: -1;
-
 }
 
 .intro_content {
@@ -108,7 +103,6 @@
         text-align: start;
         font-size: 20px;
     }
-
 }
 
 .describe {
@@ -140,7 +134,7 @@
 
 .award_title {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     font-size: 15px;
     font-weight: 700;
@@ -161,7 +155,7 @@
     // align-items: center;
 }
 
-.item+.item {
+.item + .item {
     margin-top: 10px;
 }
 
