@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = '1|reHqU7EFBimOyxFsufNEpOtUbDuFVu9FZSuq1Lr340eafd00';
+const token = '99|t06jWvOWMg4aCoiW8y5Vbe309UcQwwC7riJt3DY4f4fe3bd1';
 
 export const getProducts = async () => {
     try {
