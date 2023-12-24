@@ -20,7 +20,9 @@ function MenuBar({ className }) {
     const [arrayAdminFunc] = useState(['Danh sách sản phẩm', 'Danh sách hoá đơn'])
     const [isShowAdminList, setIsShowAdminList] = useState(false)
     const downRef = useRef(null)
-    const { userRole } = JSON.parse(localStorage.getItem('accessToken')) | 0
+    const accessToken = localStorage.getItem('accessToken');
+    const { userRole } = accessToken ? JSON.parse(accessToken) : { userRole: -1 };
+
 
     const navigate = useNavigate()
     const dispath = useDispatch()
