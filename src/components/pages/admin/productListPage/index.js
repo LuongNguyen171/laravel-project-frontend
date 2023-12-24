@@ -338,7 +338,7 @@ const ProductPage = () => {
             <DataGridMain
                 rows={rows}
                 columns={columns}
-                pageSize={10}
+                pageSize={50}
                 totalRow={50}
             />
 

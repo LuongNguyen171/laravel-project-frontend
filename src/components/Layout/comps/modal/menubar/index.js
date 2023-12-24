@@ -10,17 +10,19 @@ import ProducerTable from '../../arrays/producers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { arrayDownProduct, arrayDownProductRun } from './downProduct';
 import { Link, useNavigate } from 'react-router-dom';
-import { faGuilded, faOpencart } from '@fortawesome/free-brands-svg-icons';
+import { faOpencart } from '@fortawesome/free-brands-svg-icons';
 
 const cx = classNames.bind(styles);
 function MenuBar({ className }) {
 
     const [isShowDownProduct, setIsShowDownProduct] = useState(false)
     const [isShowDownProductRun, setIsShowDownProductRun] = useState(false)
-    const [arrayAdminFunc] = useState(['Danh sách sản phẩm', 'Danh sách hoá đơn'])
+    const [arrayAdminFunc] = useState(['Danh sách sản phẩm', 'Danh sách Người dùng'])
     const [isShowAdminList, setIsShowAdminList] = useState(false)
     const downRef = useRef(null)
-    const { userRole } = JSON.parse(localStorage.getItem('accessToken'))
+    const accessToken = localStorage.getItem('accessToken');
+    const { userRole } = accessToken ? JSON.parse(accessToken) : { userRole: -1 };
+
 
     const navigate = useNavigate()
     const dispath = useDispatch()
@@ -45,10 +47,10 @@ function MenuBar({ className }) {
     const handleItemClickAdmin = (index) => {
         switch (index) {
             case 1:
-                navigate('/admin/billList');
+                navigate('/admin/productList');
                 break;
             case 2:
-                navigate('/admin/productList');
+                navigate('/admin/userList');
                 break;
             default:
                 break;
