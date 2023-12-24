@@ -45,7 +45,7 @@ export const handleLogin = async (userEmail, userPassword) => {
 
         const tokenInfo = {
             token: response.data.token,
-            user: response.data.user,
+            userRole: response.data.userRole,
             expirationTime: expirationTime
         }
         // console.log("date :", new Date().getTime())
