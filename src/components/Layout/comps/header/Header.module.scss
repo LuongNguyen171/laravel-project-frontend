@@ -53,13 +53,10 @@
     .action_icon {
         font-size: var(--fontIcon);
     }
-
 }
 
 .action_ResLog {
     position: relative;
-
-
 }
 
 .container {
@@ -78,8 +75,6 @@
     font-size: larger;
     font-weight: 500;
     padding: 10px 0 10px 0;
-
-
 }
 
 .container_item {
@@ -92,10 +87,8 @@
     }
 }
 
-
 .action_icon {
     &:hover {
-
         color: var(--swColor);
         cursor: pointer;
     }
@@ -118,4 +111,8 @@
     border-radius: 50%;
     top: 12px;
     left: 8px;
+}
+
+img {
+    cursor: pointer;
 }

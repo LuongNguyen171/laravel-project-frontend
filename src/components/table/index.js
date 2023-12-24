@@ -99,7 +99,7 @@ const DataGridMain = ({
                 initialState={{
                     pagination: {
                         paginationModel: {
-                            pageSize: 20,
+                            pageSize: pageSize,
                             page: 0,
                         },
                     },

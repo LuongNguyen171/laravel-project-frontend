@@ -154,7 +154,7 @@ const UpdateProductModal = ({ open, onClose, onEdit, data }) => {
                                 fontSize: '14px',
                             }}
                         >
-                            Mô tả sản phẩm
+                            Thông tin sản phẩm
                         </Typography>
                         <TextField
                             fullWidth
@@ -165,6 +165,27 @@ const UpdateProductModal = ({ open, onClose, onEdit, data }) => {
                                 setUpdateProductData((prevData) => ({
                                     ...prevData,
                                     productInfor: e.target.value,
+                                }));
+                            }}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography
+                            sx={{
+                                fontSize: '14px',
+                            }}
+                        >
+                            Giới thiệu sản phẩm
+                        </Typography>
+                        <TextField
+                            fullWidth
+                            multiline
+                            rows={4}
+                            value={updateProductData.productIntro}
+                            onChange={(e) => {
+                                setUpdateProductData((prevData) => ({
+                                    ...prevData,
+                                    productIntro: e.target.value,
                                 }));
                             }}
                         />

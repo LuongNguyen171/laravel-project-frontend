@@ -47,7 +47,7 @@ const ProductPage = () => {
             productQuantity: data.quantity,
             productSoldQt: data.quantitySold,
             productInfor: data.description,
-            productIntro: 'Giới thiệu sản phẩm',
+            productIntro: data.intro,
             productDiscount: data.discount,
             productTmName: data.trademark,
         };
@@ -294,7 +294,10 @@ const ProductPage = () => {
     ];
 
     return (
-        <Box className="container" style={{ padding: '0 20px 40px 20px' }}>
+        <Box
+            className="container"
+            style={{ width: 'auto', padding: '0 20px 40px 20px' }}
+        >
             <Box
                 className="card-data-header"
                 style={{
