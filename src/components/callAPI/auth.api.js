@@ -71,7 +71,7 @@ export const handleLogin = async (userEmail, userPassword) => {
 
 export const handleForgotPassword = async (userEmail) => {
     try {
-        const response = await axios.post("http://localhost:3001/auth/forgot-password", {
+        const response = await axios.post("http://127.0.0.1:8000/api/mail/reset-password", {
             userEmail: userEmail
         })
         console.log(response.data)
@@ -81,8 +81,6 @@ export const handleForgotPassword = async (userEmail) => {
             isSuccess: true
         }
     } catch (error) {
-        console.error("Đã có lỗi :", error)
-
 
         return {
             message: error.response.data.message,
@@ -92,21 +90,23 @@ export const handleForgotPassword = async (userEmail) => {
 
 }
 
-export const handleResetPassword = async (email, token, newPassword) => {
-    try {
-        const response = await axios.post(`http://localhost:3001/auth/reset-password?email=${email}&token=${token}&newPassword=${newPassword}`)
+export const handleResetPassword = async (token, newPassword) => {
+    if (token && newPassword) {
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/auth/reset-password', {
+                userPassword: newPassword
+            },
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+            return true
 
-        return {
-            message: response.data.message,
-            isSuccess: true
+        } catch (error) {
+            return false
         }
 
-    } catch (error) {
-        console.error("Đã có lỗi :", error)
-        return {
-            message: error.response.data.message,
-            isSuccess: false
-        }
     }
 
 }
@@ -123,10 +123,7 @@ export const handleGetPersonalInformation = async (token) => {
             return response.data.user
 
         } catch (error) {
-            return {
-                userInformation: error.response.data.message,
-                isSuccess: false
-            }
+            throw error
         }
 
     }
@@ -142,7 +139,7 @@ export const handleUpdateUserInformation = async (userPhoneNumber, userAddress, 
         })
         console.log('updaded information successfully')
     } catch (error) {
-        console.error('an error occurred while updating')
+        throw error
     }
 }
 

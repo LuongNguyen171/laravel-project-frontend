@@ -21,7 +21,6 @@
     margin-top: var(--marginTopLayout);
     justify-content: center;
 
-
     h3 {
         color: black;
         font-weight: 600;
@@ -32,8 +31,7 @@
 .bill_container {
     width: 60%;
     display: flex;
-    justify-content: end;
-
+    justify-content: flex-end;
 }
 
 .logo {
@@ -43,8 +41,8 @@
 
 .forms {
     display: flex;
-    text-align: start;
-    justify-content: end;
+    text-align: flex-start;
+    justify-content: flex-end;
     width: 90%;
 }
 
@@ -53,9 +51,7 @@
 }
 
 .customer_header {
-
     align-items: baseline;
-
 }
 
 .user {
@@ -66,7 +62,6 @@
     &:hover {
         color: var(--mainColor);
         cursor: pointer;
-
     }
 }
 
@@ -74,29 +69,36 @@
     margin-right: 5px;
 }
 
-.input_container+.input_container {
+.input_container + .input_container {
     margin-top: 10px;
 }
-
 
 .input_element {
     font-size: 10px;
 }
 
-.input_element+.input_element {
+.input_element + .input_element {
     margin-top: 10px;
-
 }
 
 .input_textNotice {
     color: #ca464b;
     font-size: 10px;
+    text-align: start;
 }
 
 .methods {
     margin-top: 63px;
     margin-left: 20px;
     width: 45%;
+
+    .shipping {
+        text-align: start;
+    }
+
+    .pay {
+        text-align: start;
+    }
 }
 
 .shipping {
@@ -104,7 +106,6 @@
 }
 
 .shipping_container {
-
     color: #0c5460;
     background-color: #d1ecf1;
     border-color: #bee5eb;
@@ -113,7 +114,6 @@
 }
 
 .pay_container {
-
     align-items: center;
     border: 1px solid #cecdcd;
     background: #fff;
@@ -121,7 +121,6 @@
     border-radius: 5px;
     color: #545454;
     padding: 10px;
-
 }
 
 .pay_method {
@@ -138,7 +137,6 @@
 }
 
 .order_container {
-
     flex: 1;
     text-align: start;
     border-left: 1px solid #7777;
@@ -146,7 +144,6 @@
     height: 100vh;
     margin-left: 30px;
     padding: 20px;
-
 }
 
 .order {
@@ -160,12 +157,9 @@
 .container {
     border-bottom: 1px solid #7777;
     padding: 10px 0 10px 0;
-
-
 }
 
 .container_discount {
-
     button {
         background-color: #357ebd;
         border-color: #2f71a9;
@@ -181,9 +175,7 @@
 }
 
 .item {
-
     align-items: center;
-
 }
 
 .item_group {
@@ -195,7 +187,7 @@
     }
 }
 
-.item+.item {
+.item + .item {
     margin-top: 20px;
 }
 
@@ -230,7 +222,6 @@
     color: white;
     text-align: center;
     font-weight: 600;
-
 }
 
 .priceTemp {
@@ -248,7 +239,6 @@
 .priceTotal {
     color: #2a9dcc;
     font-weight: 600;
-
 }
 
 .total_footer {
@@ -268,7 +258,6 @@
             cursor: pointer;
             color: var(--mainColor);
         }
-
     }
 
     button {
@@ -281,7 +270,6 @@
         &:hover {
             opacity: 0.8;
         }
-
     }
 }
 
@@ -295,8 +283,6 @@
         color: #ca464b;
     }
 }
-
-
 
 .title {
     color: black;

@@ -21,7 +21,7 @@ import useWindowDimensions from '~/hook/handleWindowDimensions';
 const DataGridMain = ({
     totalRow = 99,
     // page = 1,
-    pageSize = 20,
+    pageSize = 10,
     rows,
     columns,
 }) => {
@@ -32,7 +32,9 @@ const DataGridMain = ({
     const getHeaderHeight = () => {
         const root = document.documentElement;
         const computedStyle = getComputedStyle(root);
-        const heightHeader = computedStyle.getPropertyValue('--heightHeader').trim();
+        const heightHeader = computedStyle
+            .getPropertyValue('--height-header')
+            .trim();
 
         const numericHeight = parseFloat(heightHeader);
 
@@ -54,7 +56,7 @@ const DataGridMain = ({
             setTableHeight(windowDimensions.height - (getHeaderHeight() + 188));
         }
     }, [windowDimensions]);
-    console.log("windowDimensions: ", windowDimensions);
+    // console.log("windowDimensions: ", windowDimensions);
 
     const totalPage = Math.ceil(totalRow / pageSize);
     const labelRowPageper = () => {
@@ -97,7 +99,7 @@ const DataGridMain = ({
                 initialState={{
                     pagination: {
                         paginationModel: {
-                            pageSize: 20,
+                            pageSize: pageSize,
                             page: 0,
                         },
                     },
@@ -109,7 +111,7 @@ const DataGridMain = ({
                 alignItems={'center'}
                 justifyContent={'end'}
             >
-                <Typography variant="h2"> {labelRowPageper()}</Typography>
+                <Typography variant="h5"> {labelRowPageper()}</Typography>
                 <Pagination
                     count={totalPage}
                     page={page}

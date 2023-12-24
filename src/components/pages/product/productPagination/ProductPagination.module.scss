@@ -1,16 +1,13 @@
 .wrapper {
-    margin-top: calc(3*var(--marginTopLayout));
+    margin-top: calc(3 * var(--marginTopLayout));
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .container {
-
     width: var(--WithLayout);
-
 }
 
 .layout_container {
@@ -37,7 +34,7 @@
 
 .arrange_container {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     margin-bottom: 10px;
 
     h3 {
@@ -58,7 +55,7 @@
     }
 }
 
-.arrange_input+.arrange_input {
+.arrange_input + .arrange_input {
     margin-left: 20px;
 }
 

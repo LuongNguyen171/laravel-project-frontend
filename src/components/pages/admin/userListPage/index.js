@@ -1,155 +1,136 @@
 import './UserListPage.module.scss';
-
-import React, { useState } from 'react';
-import {
-    Box,
-    Button,
-    FormControl,
-    InputLabel,
-    MenuItem,
-    Select,
-    Typography,
-} from '@mui/material';
-
-import IosShareIcon from '@mui/icons-material/IosShare';
+import React, { useState, useEffect } from 'react';
+import { Box, Typography } from '@mui/material';
 import DataGridMain from '~/components/table';
+import { getUsers } from '~/components/callAPI/user.api';
+import { useNavigate } from 'react-router-dom';
 
-const ReportPage = () => {
-    const rows = [...Array(50)].map((_, idx) => ({
-        id: idx + 1,
-        deviceName: 'Tên thiết bị',
-        typeDevice: 'Loại thiết bị',
-        projectName: 'Thuộc dự án',
-        deviceStatus: 'Đang hoạt động',
-        quantityErr: 2,
-        errRate: '5%',
-        operationTime: '10:36:00',
+const UserPage = () => {
+    const navigate = useNavigate();
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        getAllUsers();
+    }, []);
+
+    const getAllUsers = async () => {
+        const response = await getUsers();
+        if (response) {
+            setUsers(response);
+        }
+    };
+
+    const rows = users.map((user) => ({
+        id: user.userId,
+        userName: user.userName,
+        userPhoneNumber: user.userPhoneNumber,
+        userAddress: user.userAddress,
+        userEmail: user.userEmail,
     }));
 
     const columns = [
         {
-            field: 'deviceName',
-            headerName: 'Tên thiết bị',
-            flex: 1,
+            field: 'id',
+            headerName: 'Id',
+            flex: 0.3,
             sortable: false,
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography variant="h6">{headerName}</Typography>;
+                return (
+                    <Typography variant="h5" fontWeight="bold">
+                        {headerName}
+                    </Typography>
+                );
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography sx={{ fontWeight: "600" }} variant="label1">{text}</Typography>;
+                return <Typography variant="h5">{text}</Typography>;
             },
         },
         {
-            field: 'typeDevice',
-            headerName: 'Loại thiết bị',
-            flex: 1,
+            field: 'userName',
+            headerName: 'Tên người dùng',
+            flex: 0.8,
             sortable: false,
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography variant="h6">{headerName}</Typography>;
+                return (
+                    <Typography variant="h5" fontWeight="bold">
+                        {headerName}
+                    </Typography>
+                );
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography sx={{ fontSize: "13px" }}>{text}</Typography>;
+                return <Typography variant="h5">{text}</Typography>;
             },
         },
         {
-            field: 'projectName',
-            headerName: 'Thuộc dự án',
-            flex: 1,
+            field: 'userPhoneNumber',
+            headerName: 'Số điện thoại',
+            flex: 0.6,
             sortable: false,
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography variant="h6">{headerName}</Typography>;
+                return (
+                    <Typography variant="h5" fontWeight="bold">
+                        {headerName}
+                    </Typography>
+                );
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography sx={{ fontSize: "13px" }}>{text}</Typography>;
+                return <Typography variant="h5">{text}</Typography>;
             },
         },
         {
-            field: 'deviceStatus',
-            headerName: 'Đang hoạt động',
+            field: 'userAddress',
+            headerName: 'Địa chỉ',
             flex: 1,
             sortable: false,
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography variant="h6">{headerName}</Typography>;
+                return (
+                    <Typography variant="h5" fontWeight="bold">
+                        {headerName}
+                    </Typography>
+                );
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography sx={{ fontSize: "13px" }}>{text}</Typography>;
+                return <Typography variant="h5">{text}</Typography>;
             },
         },
         {
-            field: 'quantityErr',
-            headerName: 'Số lỗi',
+            field: 'userEmail',
+            headerName: 'Email',
             flex: 1,
             sortable: false,
             headerClassName: 'custom-header',
             renderHeader(params) {
                 let headerName = params.colDef.headerName;
-                return <Typography variant="h6">{headerName}</Typography>;
+                return (
+                    <Typography variant="h5" fontWeight="bold">
+                        {headerName}
+                    </Typography>
+                );
             },
             renderCell: (params) => {
                 let text = params.value;
-                return <Typography sx={{ fontSize: "13px" }}>{text}</Typography>;
-            },
-        },
-        {
-            field: 'errRate',
-            headerName: 'Tỷ lệ lỗi',
-            flex: 1,
-            sortable: false,
-            headerClassName: 'custom-header',
-            renderHeader(params) {
-                let headerName = params.colDef.headerName;
-                return <Typography variant="h6">{headerName}</Typography>;
-            },
-            renderCell: (params) => {
-                let text = params.value;
-                return <Typography sx={{ fontSize: "13px" }}>{text}</Typography>;
-            },
-        },
-        {
-            field: 'operationTime',
-            headerName: 'Thời gian hoạt động',
-            flex: 1,
-            sortable: false,
-            headerClassName: 'custom-header',
-            renderHeader(params) {
-                let headerName = params.colDef.headerName;
-                return <Typography variant="h6">{headerName}</Typography>;
-            },
-            renderCell: (params) => {
-                let text = params.value;
-                return <Typography sx={{ fontSize: "13px" }}>{text}</Typography>;
+                return <Typography variant="h5">{text}</Typography>;
             },
         },
     ];
-
-    const menuItemDevice = [
-        { id: 1, projectName: 'A' },
-        { id: 2, projectName: 'B' },
-        { id: 3, projectName: 'C' },
-    ];
-
-    const [project, setProject] = useState('');
-    const [labelHidden, setLabelHidden] = useState(false);
-
-    const handleChange = (event) => {
-        setProject(event.target.value);
-        setLabelHidden(true);
-    };
 
     return (
-        <Box className="container" style={{ padding: '0px 32px' }}>
+        <Box
+            className="container"
+            style={{ width: 'auto', padding: '0 20px 40px 20px' }}
+        >
             <Box
                 className="card-data-header"
                 style={{
@@ -158,79 +139,21 @@ const ReportPage = () => {
                     padding: '24px 0',
                 }}
             >
-
-                <Box
-                    className="header-button"
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: ' 16px',
-                        width: '100%',
-                    }}
-                >
-                    <Box
-                        component="div"
-                        style={{
-                            width: 250,
-                            flex: '1',
-                            backgroundColor: 'var( --white)',
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            gap: '8px',
-                            borderRadius: '6px',
-                        }}
-                    >
-                        <FormControl fullWidth size="small">
-                            <InputLabel
-                                style={{
-                                    display: labelHidden ? 'none' : 'flex',
-                                    transform: 'translate(16px, 43%)',
-                                    position: 'absolute',
-                                    color: 'var(--text-primary)',
-                                }}
-                                id="demo-simple-select-label"
-                            >
-                                <Typography
-                                    variant="body2"
-                                    style={{
-                                        overflow: 'hidden',
-                                        color: ' var(--text-primary)',
-                                        textOverflow: 'ellipsis',
-                                        whitespace: 'nowrap',
-                                    }}
-                                >
-                                    Tất cả dự án
-                                </Typography>
-                            </InputLabel>
-                            <Select
-                                value={project}
-                                onChange={handleChange}
-                                labelId="demo-simple-select-label"
-                                id="report-simple-select"
-                            >
-                                {menuItemDevice.map((item) => (
-                                    <MenuItem key={item.id} value={item.projectName}>
-                                        <Typography sx={{ fontSize: "13px" }}>
-                                            {' '}
-                                            Dự án {item.projectName}
-                                        </Typography>
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-                    </Box>
-                    <Button
-                        variant="contained"
-                        startIcon={<IosShareIcon />}
-                        disableRipple
-                    >
-                        <Typography variant="button1">Xuất Excel</Typography>
-                    </Button>
-                </Box>
+                <Typography variant="h3" fontWeight="bold" marginBottom="10px">
+                    Quản lý người dùng
+                </Typography>
+                <button onClick={() => navigate('/admin/productList')}>
+                    Switch to Product List
+                </button>
             </Box>
-            <DataGridMain rows={rows} columns={columns} />
+            <DataGridMain
+                rows={rows}
+                columns={columns}
+                pageSize={10}
+                totalRow={50}
+            />
         </Box>
     );
 };
 
-export default ReportPage;
+export default UserPage;
