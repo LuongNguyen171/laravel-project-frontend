@@ -9,7 +9,7 @@ import { faCaretDown, faCaretUp, faCircleXmark, faPaperPlane, faQrcode, faShop }
 import ProducerTable from '../../arrays/producers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { arrayDownProduct, arrayDownProductRun } from './downProduct';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { faGuilded, faOpencart } from '@fortawesome/free-brands-svg-icons';
 
 const cx = classNames.bind(styles);
@@ -17,8 +17,12 @@ function MenuBar({ className }) {
 
     const [isShowDownProduct, setIsShowDownProduct] = useState(false)
     const [isShowDownProductRun, setIsShowDownProductRun] = useState(false)
+    const [arrayAdminFunc] = useState(['Danh sách sản phẩm', 'Danh sách hoá đơn'])
+    const [isShowAdminList, setIsShowAdminList] = useState(false)
     const downRef = useRef(null)
+    const { userRole } = JSON.parse(localStorage.getItem('accessToken'))
 
+    const navigate = useNavigate()
     const dispath = useDispatch()
 
     const handleClose = () => {
@@ -30,9 +34,27 @@ function MenuBar({ className }) {
         setIsShowDownProduct(!isShowDownProduct)
     }
 
+    const ShowAdminList = () => {
+        setIsShowAdminList(!isShowAdminList)
+    }
     const showDownProductRun = () => {
         setIsShowDownProductRun(!isShowDownProductRun)
     }
+
+
+    const handleItemClickAdmin = (index) => {
+        switch (index) {
+            case 1:
+                navigate('/admin/billList');
+                break;
+            case 2:
+                navigate('/admin/productList');
+                break;
+            default:
+                break;
+        }
+        handleClose()
+    };
 
 
     return (<div className={className} >
@@ -80,7 +102,7 @@ function MenuBar({ className }) {
                         (<div className={cx('down', { [styles.scaleUp]: isShowDownProduct, [styles.scaleDown]: !isShowDownProduct })} ref={downRef}>
                             {
                                 arrayDownProduct.map((downPro) => (
-                                    <p key={downPro.id}>{downPro.name}</p>
+                                    <p key={downPro.id} >{downPro.name}</p>
                                 ))
                             }
                         </div>)
@@ -129,6 +151,29 @@ function MenuBar({ className }) {
                     </div>
 
                 </div>
+                {
+                    userRole === 1 && (
+
+                        <div className={cx('caterPage_item')}>
+                            <div className={cx('item_header', 'border_top')}>
+                                <Link to={'/admin/productList'} className={cx('header_topic',)} onClick={handleClose}>ADMIN </Link>
+                                <FontAwesomeIcon className={cx('icon-down')} icon={isShowAdminList ? faCaretUp : faCaretDown} onClick={ShowAdminList} />
+                            </div>
+                            {
+                                isShowAdminList &&
+                                (<div className={cx('down', { [styles.scaleUp]: isShowAdminList, [styles.scaleDown]: !isShowAdminList })} ref={downRef}>
+                                    {
+                                        arrayAdminFunc.map((item, index) => (
+                                            <p key={index} onClick={() => handleItemClickAdmin(index + 1)}>{item}</p>
+                                        ))
+                                    }
+                                </div>)
+                            }
+
+                        </div>
+                    )
+                }
+
             </div>
         </div>
         <div className={cx('style')}>

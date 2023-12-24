@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { handleGetPersonalInformation, handleLogout, handleUpdatePassword } from '~/components/callAPI/auth.api';
 import { useNavigate, useParams } from 'react-router-dom';
-import { handleGetBillUserByEmail } from '~/components/callAPI/bill.api';
+import { handleGetBillByUser } from '~/components/callAPI/bill.api';
 import { formatProductPrice } from '~/components/Layout/comps/product/productHandleMethod';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal';
@@ -14,13 +14,31 @@ function Account() {
 
     const [activeIndex, setActiveIndex] = useState(0)
     const [userInformation, setUserInformation] = useState({})
-    const [userOrder, setUserOrder] = useState([])
+
+    // <td>{order.billId}</td>
+    // <td>{order.productName}
+    //     <span>
+    //         (số lượng :{order.quantityPurchased})
+    //     </span>
+    // </td>
+    // <td>{order.DatePurchase}</td>
+    // <td>{order.userAddress}</td>
+    // <td>{formatProductPrice(order.orderValue)}</td>
+    // <td>{formatProductPrice(order.orderValue)}</td>
+
+    const [userOrder] = useState([
+        { billId: 1, productName: 'Nike Air Force 1 07', quantityPurchased: 1, DatePurchase: "26/12/2023", userAddress: "TP Hồ Chí Minh", orderValue: 2399000 },
+        { billId: 2, productName: 'LeBron XXI Tahitian', quantityPurchased: 2, DatePurchase: "26/12/2023", userAddress: "TP Hồ Chí Minh", orderValue: 7653431 }
+    ])
     const [isData, setIsData] = useState(true)
     const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [verifyPassword, setVerifyPassword] = useState('')
     const [checkPasswordText, setCheckPasswordText] = useState(null)
     const [isShowModal, setIsShowModal] = useState(false)
+
+    const { token } = JSON.parse(localStorage.getItem('accessToken'))
+
 
     const navigate = useNavigate()
 
@@ -97,22 +115,21 @@ function Account() {
     //     };
     //     fetchData();
     // }, []);
-    const { token } = JSON.parse(localStorage.getItem('accessToken'))
 
     const checkToken = async () => {
         if (token) {
             const userInfor = await handleGetPersonalInformation(token);
-            console.log("userInfor: " + userInfor)
             setUserInformation(userInfor);
+            //get bill
+            // const userOder = await handleGetBillByUser(token)
+            // setUserOrder(userOder)
         }
-
     }
 
     useEffect(() => {
         checkToken()
-
     }, [token]);
-    console.log('user: ', userInformation)
+
 
     return (<div className={cx('wrapper')}>
         {
