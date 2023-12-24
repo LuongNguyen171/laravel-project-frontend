@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { handleResetPassword } from '~/components/callAPI/auth.api';
 
 import styles from './ResetPassword.module.scss';
@@ -12,35 +12,40 @@ function ResetPassword() {
     const [confirmPassword, setConFirmPassword] = useState('')
 
     const [comparePasswordError, setComParePasswordError] = useState('')
-    const [messageResponse, setMessageResponse] = useState({})
+    const [message, setMessage] = useState('')
+    const [isSuccess, setIsSuccess] = useState(false)
 
+    // const { token } = useParams()
     const url = new URL(window.location.href);
     const token = url.searchParams.get('token');
-    const email = url.searchParams.get('email');
 
     const navigate = useNavigate()
 
     const handleResetPasswordOnclick = async () => {
-        console.log('token:', token)
-        console.log('email:', email)
+        console.log("token: ", token)
+
         if (innitPassword === confirmPassword) {
 
-            setMessageResponse(await handleResetPassword(email, token, innitPassword))
-            setComParePasswordError('')
-
-
+            const isReset = await handleResetPassword(token, innitPassword)
+            if (isReset) {
+                setMessage('Thay đổi mật khẩu thành công !')
+                setIsSuccess(true)
+            } else {
+                setMessage('Mật khẩu không hợp lệ hoặc token đã hết hạn !')
+                setIsSuccess(false)
+            }
         } else {
-            setComParePasswordError('password does not match')
+            setMessage('Mật khẩu không khớp!')
+            setIsSuccess(false)
         }
 
     }
 
     useEffect(() => {
-        console.log('isSuccess: ', messageResponse.isSuccess)
-        if (messageResponse.isSuccess === true) {
+        if (isSuccess) {
             navigate('/login')
         }
-    }, [messageResponse.isSuccess])
+    }, [isSuccess])
     return (<div className={cx('wrapper')}>
         <section className={cx('loginLayout')}>
             <div className={cx('login_content')}>
@@ -66,10 +71,10 @@ function ResetPassword() {
 
                         <p className={cx('message',
                             {
-                                messageSuccess: messageResponse.isSuccess,
-                                messageFailure: messageResponse.isSuccess === false
+                                messageSuccess: isSuccess,
+                                messageFailure: isSuccess === false
                             })}
-                        >{messageResponse.message}</p>
+                        >{message}</p>
 
                         <div className={cx('login_btn')}>
                             <button

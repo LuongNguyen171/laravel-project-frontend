@@ -5,7 +5,7 @@ import DataGridMain from '~/components/table';
 import { getUsers } from '~/components/callAPI/user.api';
 import { useNavigate } from 'react-router-dom';
 
-const ProductPage = () => {
+const UserPage = () => {
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
 
@@ -70,7 +70,7 @@ const ProductPage = () => {
         {
             field: 'userPhoneNumber',
             headerName: 'Số điện thoại',
-            flex: 0.8,
+            flex: 0.6,
             sortable: false,
             headerClassName: 'custom-header',
             renderHeader(params) {
@@ -156,4 +156,4 @@ const ProductPage = () => {
     );
 };
 
-export default ProductPage;
+export default UserPage;
