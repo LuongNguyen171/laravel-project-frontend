@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = '1|reHqU7EFBimOyxFsufNEpOtUbDuFVu9FZSuq1Lr340eafd00';
+// const token = '1|reHqU7EFBimOyxFsufNEpOtUbDuFVu9FZSuq1Lr340eafd00';
 
 export const getProducts = async () => {
     try {
@@ -19,7 +19,7 @@ export const addProduct = async (data) => {
         {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
+                // Authorization: `Bearer ${token}`,
             },
         },
     );
@@ -32,7 +32,7 @@ export const updateProduct = async (data) => {
         {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
+                // Authorization: `Bearer ${token}`,
             },
         },
     );

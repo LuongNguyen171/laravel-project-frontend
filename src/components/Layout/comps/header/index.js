@@ -1,8 +1,12 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBagShopping, faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
-import Logo from '~/components/images/logo.webp'
+import {
+    faBagShopping,
+    faBars,
+    faSearch,
+} from '@fortawesome/free-solid-svg-icons';
+import Logo from '~/components/images/logo.webp';
 import { faCircleUser } from '@fortawesome/free-regular-svg-icons';
 // import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,37 +20,36 @@ import { handleLogout } from '~/components/callAPI/auth.api';
 
 const cx = classNames.bind(styles);
 function Header() {
+    const [isActive, setIsActive] = useState(false);
+    const [quantityCart, setQuantityCart] = useState(0);
+    const [expiredToken, setExpiredToken] = useState(-1);
 
-    const [isActive, setIsActive] = useState(false)
-    const [quantityCart, setQuantityCart] = useState(0)
-    const [expiredToken, setExpiredToken] = useState(-1)
-
-    const quantity = useSelector(quantityCartSelecter)
-
+    const quantity = useSelector(quantityCartSelecter);
 
     const dispath = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleCheckExpiredToken = () => {
         const currentTime = new Date().getTime();
-        return currentTime <= expiredToken
-    }
+        return currentTime <= expiredToken;
+    };
 
     const handleAppearMenuBar = () => {
-        dispath(appearMenuBar.actions.APPEAR_MENU_BAR(true))
-    }
+        dispath(appearMenuBar.actions.APPEAR_MENU_BAR(true));
+    };
 
     const handleShowDropdown = () => {
-        setIsActive(!isActive)
-    }
+        setIsActive(!isActive);
+    };
 
     useEffect(() => {
-        setQuantityCart(quantity)
-
+        setQuantityCart(quantity);
     }, [quantity]);
 
     useEffect(() => {
-        const storedQuantityCart = JSON.parse(localStorage.getItem('quantityNotice'));
+        const storedQuantityCart = JSON.parse(
+            localStorage.getItem('quantityNotice'),
+        );
         setQuantityCart(storedQuantityCart); // Cập nhật từ localStorage
     }, []);
 
@@ -67,43 +70,84 @@ function Header() {
         }
     }, []);
 
+    const handleLogoClick = () => {
+        navigate('/');
+    };
 
     return (
-
         <header className={cx('header')}>
             <span className={cx('menubar')} onClick={handleAppearMenuBar}>
                 <FontAwesomeIcon icon={faBars} className={cx('icon_menubar')} />
                 <p>MENU</p>
             </span>
-            <img src={Logo}></img>
+            <img onClick={handleLogoClick} src={Logo}></img>
             <div className={cx('action')}>
-                <FontAwesomeIcon className={cx('action_icon')} icon={faSearch} />
-                <div className={cx('action_ResLog')} onClick={handleShowDropdown}>
-                    <FontAwesomeIcon className={cx('action_icon')} icon={faCircleUser} />
-                    <div className={cx('container', { showDropDown: isActive, hiddenDropDown: !isActive })}>
-                        <Link className={cx('container_item')} to={handleCheckExpiredToken() ? '/user/account' : '/login'}>{
-                            handleCheckExpiredToken() ? 'Tài Khoản' : 'Đăng nhập'
-                        }</Link>
-                        <Link className={cx('container_item')}
-                            to={handleCheckExpiredToken() ? '/login' : '/register'}
+                <FontAwesomeIcon
+                    className={cx('action_icon')}
+                    icon={faSearch}
+                />
+                <div
+                    className={cx('action_ResLog')}
+                    onClick={handleShowDropdown}
+                >
+                    <FontAwesomeIcon
+                        className={cx('action_icon')}
+                        icon={faCircleUser}
+                    />
+                    <div
+                        className={cx('container', {
+                            showDropDown: isActive,
+                            hiddenDropDown: !isActive,
+                        })}
+                    >
+                        <Link
+                            className={cx('container_item')}
+                            to={
+                                handleCheckExpiredToken()
+                                    ? '/user/account'
+                                    : '/login'
+                            }
+                        >
+                            {handleCheckExpiredToken()
+                                ? 'Tài Khoản'
+                                : 'Đăng nhập'}
+                        </Link>
+                        <Link
+                            className={cx('container_item')}
+                            to={
+                                handleCheckExpiredToken()
+                                    ? '/login'
+                                    : '/register'
+                            }
                             onClick={() => {
                                 if (handleCheckExpiredToken()) {
-                                    handleLogout()
+                                    handleLogout();
                                 }
-                            }}>{
-                                handleCheckExpiredToken() ? 'Đăng xuất' : 'Đăng ký'
-                            }</Link>
+                            }}
+                        >
+                            {handleCheckExpiredToken()
+                                ? 'Đăng xuất'
+                                : 'Đăng ký'}
+                        </Link>
                     </div>
                 </div>
-                <div className={cx('icon_cart')} onClick={() => navigate('/cart')}>
-                    <FontAwesomeIcon className={cx('action_icon')} icon={faBagShopping} />
-                    {
-                        quantityCart !== 0 ? (<p className={cx('quantity')}>{quantityCart}</p>) :
-                            <p ></p>
-                    }
+                <div
+                    className={cx('icon_cart')}
+                    onClick={() => navigate('/cart')}
+                >
+                    <FontAwesomeIcon
+                        className={cx('action_icon')}
+                        icon={faBagShopping}
+                    />
+                    {quantityCart !== 0 ? (
+                        <p className={cx('quantity')}>{quantityCart}</p>
+                    ) : (
+                        <p></p>
+                    )}
                 </div>
             </div>
-        </header>);
+        </header>
+    );
 }
 
 export default Header;
