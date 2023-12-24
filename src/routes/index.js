@@ -17,7 +17,7 @@ import SportShoe from "~/components/pages/sportShoe";
 import RunShoe from "~/components/pages/runShoe";
 import BasketShoe from "~/components/pages/basketShoe";
 import Personal from "~/components/pages/private_pages/account";
-import UserList from "~/components/pages/admin/userListPage";
+import BillList from "~/components/pages/admin/billListPage";
 import ProductList from "~/components/pages/admin/productListPage";
 import Blog from "~/components/pages/Blog";
 
@@ -27,7 +27,7 @@ const publicRouters = [
     { path: '/contact', component: Contact },
     { path: '/introduction', component: Introduction },
     { path: '/news', component: News },
-    { path: '/blog/:id', component:Blog},
+    { path: '/blog/:id', component: Blog },
     { path: '/product', component: Product },
     { path: '/sportShoe', component: SportShoe },
     { path: '/runShoe', component: RunShoe },
@@ -40,7 +40,7 @@ const publicRouters = [
     { path: '/user/forgot-password', component: ForgotPassword, layout: OnlyLayout },
     { path: '/user/reset-password', component: ResetPassword, layout: OnlyLayout },
     { path: '/bill/create-bill', component: Bill, layout: OnlyLayout },
-    { path: '/admin/userList', component: UserList, layout: HideFooterLayout },
+    { path: '/admin/billList', component: BillList, layout: HideFooterLayout },
     { path: '/admin/productList', component: ProductList, layout: HideFooterLayout },
 
 ]

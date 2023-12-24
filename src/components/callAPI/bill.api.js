@@ -1,5 +1,6 @@
 import axios from "axios"
 
+const { token } = JSON.parse(localStorage.getItem('accessToken')) | ''
 
 export const createBill = async (userEmail, userName, userPhoneNumber, userAddress,
     productId, quantityPurchased, datePurchase) => {
@@ -28,13 +29,15 @@ export const createBill = async (userEmail, userName, userPhoneNumber, userAddre
 
 }
 
-export const handleGetBillUserByEmail = async (userEmail) => {
+export const handleGetBillByUser = async () => {
     try {
-        const response = await axios.get(`http://localhost:3001/bill/getBillByUserEmail?userEmail=${userEmail}`);
-        console.log("response: ", response);
+        const response = await axios.get('http://127.0.0.1:8000/api/bill/get-bill-user', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         return response.data;
     } catch (error) {
-        console.error(error);
         throw error;
     }
 }

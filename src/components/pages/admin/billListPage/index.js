@@ -1,4 +1,4 @@
-import './UserListPage.module.scss';
+import './BillListPage.module.scss';
 import { mockDataUser } from '../../../callAPI/user.api';
 import React, { useState } from 'react';
 import {
@@ -15,7 +15,7 @@ import IosShareIcon from '@mui/icons-material/IosShare';
 import DataGridMain from '~/components/table';
 import { useNavigate } from 'react-router-dom';
 
-const UserPage = () => {
+const BillList = () => {
     const navigate = useNavigate();
     const rows = [...Array(50)].map((_, idx) => ({
         id: idx + 1,
@@ -197,9 +197,7 @@ const UserPage = () => {
                             borderRadius: '6px',
                         }}
                     >
-                        <button onClick={() => navigate('/admin/productList')}>
-                            Switch to Product List
-                        </button>
+
                         <FormControl fullWidth size="small">
                             <InputLabel
                                 style={{
@@ -255,4 +253,4 @@ const UserPage = () => {
         </Box>
     );
 };
-export default UserPage;
+export default BillList;

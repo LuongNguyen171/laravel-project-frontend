@@ -306,9 +306,7 @@ const ProductPage = () => {
                 <Typography variant="h3" fontWeight="bold" marginBottom="10px">
                     Quản lý sản phẩm
                 </Typography>
-                <button onClick={() => navigate('/admin/userList')}>
-                    Switch to User List
-                </button>
+
                 <Box
                     className="header-button"
                     style={{
