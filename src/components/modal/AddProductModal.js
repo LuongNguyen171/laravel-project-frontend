@@ -20,6 +20,7 @@ const AddProductModal = ({ open, onClose, onAdd }) => {
     const [quantity, setQuantity] = useState('');
     const [quantitySold, setQuantitySold] = useState('');
     const [description, setDescription] = useState('');
+    const [intro, setIntro] = useState('');
     const [discount, setDiscount] = useState('');
     const [status, setStatus] = useState(true);
 
@@ -31,6 +32,7 @@ const AddProductModal = ({ open, onClose, onAdd }) => {
             quantity,
             quantitySold,
             description,
+            intro,
             discount,
             status,
             image,
@@ -42,6 +44,7 @@ const AddProductModal = ({ open, onClose, onAdd }) => {
         setQuantity('');
         setQuantitySold('');
         setDescription('');
+        setIntro('');
         setDiscount('');
         setStatus(true);
         setImage(null);
@@ -56,6 +59,7 @@ const AddProductModal = ({ open, onClose, onAdd }) => {
         setQuantity('');
         setQuantitySold('');
         setDescription('');
+        setIntro('');
         setDiscount('');
         setStatus(true);
         setImage(null);
@@ -68,6 +72,7 @@ const AddProductModal = ({ open, onClose, onAdd }) => {
             setQuantity('');
             setQuantitySold('');
             setDescription('');
+            setIntro('');
             setDiscount('');
             setStatus(true);
             setImage(null);
@@ -176,7 +181,7 @@ const AddProductModal = ({ open, onClose, onAdd }) => {
                                 fontSize: '14px',
                             }}
                         >
-                            Mô tả sản phẩm
+                            Thông tin sản phẩm
                         </Typography>
                         <TextField
                             fullWidth
@@ -184,6 +189,22 @@ const AddProductModal = ({ open, onClose, onAdd }) => {
                             rows={4}
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography
+                            sx={{
+                                fontSize: '14px',
+                            }}
+                        >
+                            Giới thiệu sản phẩm
+                        </Typography>
+                        <TextField
+                            fullWidth
+                            multiline
+                            rows={4}
+                            value={intro}
+                            onChange={(e) => setIntro(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>

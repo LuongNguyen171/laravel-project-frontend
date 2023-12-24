@@ -69,7 +69,7 @@
     margin-right: 5px;
 }
 
-.input_container+.input_container {
+.input_container + .input_container {
     margin-top: 10px;
 }
 
@@ -77,14 +77,14 @@
     font-size: 10px;
 }
 
-.input_element+.input_element {
+.input_element + .input_element {
     margin-top: 10px;
 }
 
 .input_textNotice {
     color: #ca464b;
     font-size: 10px;
-    text-align: start
+    text-align: start;
 }
 
 .methods {
@@ -187,7 +187,7 @@
     }
 }
 
-.item+.item {
+.item + .item {
     margin-top: 20px;
 }
 
